@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Kurti</h1>
+    <h1>{{__('Create Tag')}}</h1>
 
     {!! Form::open(['url'=>'cms_tags']) !!}
         @csrf

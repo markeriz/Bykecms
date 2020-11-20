@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Kurti įrašą</h1>
+    <h1>{{ __('Create Bit') }}</h1>
 
     {!! Form::open(['url'=>'cms_bits']) !!}
         @csrf

@@ -3,9 +3,9 @@
 @section('content')
 
     @if (!empty($cms_tag)) 
-        <h1>Žymė: {{$cms_tag->name}} <a class="btn" href="{{ route('cms_tags.create') }}">Kurti žymę</a>  </h1>
+        <h1>{{__('Tag')}}: {{$cms_tag->name}} <a class="btn" href="{{ route('cms_tags.create') }}">{{__('Create Tag')}}</a>  </h1>
     @else 
-        <h1>Žymės <a class="btn" href="{{ route('cms_tags.create') }}">Kurti žymę</a>  </h1>
+        <h1>{{__('Tags')}} <a class="btn" href="{{ route('cms_tags.create') }}">{{__('Create Tag')}}</a>  </h1>
     @endif 
 
     
@@ -35,35 +35,34 @@
                             @endif
                             @if ($cms_tag->home > 0 )
                                 <br/>
-                                * pradinė žymė 
+                                * {{__('Set as homepage')}}
                             @endif
                             @if ($cms_tag->status == 0 )
                                 <br/>
-                                * žymė neaktyvi
+                                * {{__('Set Active')}}
                             @endif
                             {!! Form::hidden("tags[$cms_tag->id]", $cms_tag->id) !!}
                         </td>
                         <td>
-                            <a class="btn btn-info" href="{{ route('cms_tags.show',$cms_tag->id) }}">Rodyti</a>
-                            <a class="btn btn-primary" href="{{ route('cms_tags.edit',$cms_tag->id) }}">Redaguoti</a>
-                            <a class="btn btn-primary" href="{{ url('/cms_tag_delete/'.$cms_tag->id) }}" onclick="return confirm('Ar tikrai norite trinti?')">Trinti</a>
+                            <a class="btn btn-primary" href="{{ route('cms_tags.edit',$cms_tag->id) }}">{{__('Edit')}}</a>
+                            <a class="btn btn-primary" href="{{ url('/cms_tag_delete/'.$cms_tag->id) }}" onclick="return confirm('{{__('Do you really want to delete?')}}')">{{__('Delete')}}</a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
 
-            {!! Form::submit('Išsaugoti naują rikiavimą', array('class'=>'btn btn-primary')) !!}
-
             <p> 
-                * Spauskite ant pavadinimo ir laikydami tempkite norėdami pakeisti rikiavimą.
+                * {{__('Click on the name and drag to a position you want')}}.
             </p>
+            
+            {!! Form::submit(__('Save changed positions'), array('class'=>'btn btn-primary')) !!}
 
         {!! Form::close() !!}
 
     @else 
         <p> 
-            Žymių nėra. Spauskite "Kurti žymę".
+            {{__('Nothing to show yet')}}.
         </p>
     @endif
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-   <h1>Redaguoti</h1>
+   <h1>{{__('Edit User')}}</h1>
 
    {!! Form::model($cms_user, ['route' => ['cms_users.update', $cms_user->id]]) !!}
 

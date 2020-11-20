@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Vartotojai <a class="btn" href="{{ route('cms_users.create') }}">Kurti</a>  </h1>
+    <h1>{{__('Users')}} <a class="btn" href="{{ route('cms_users.create') }}">{{__('Create User')}}</a>  </h1>
 
     
 
@@ -17,9 +17,8 @@
                         {{ $cms_user->email }}
                     </td>
                     <td>
-                        <a class="btn btn-info" href="{{ route('cms_users.show',$cms_user->id) }}">Rodyti</a>
-                        <a class="btn btn-primary" href="{{ route('cms_users.edit',$cms_user->id) }}">Redaguoti</a>
-                        <a class="btn btn-primary" href="{{ url('/cms_user_delete/'.$cms_user->id) }}" onclick="return confirm('Ar tikrai norite trinti?')">Trinti</a>
+                        <a class="btn btn-primary" href="{{ route('cms_users.edit',$cms_user->id) }}">{{__('Edit')}}</a>
+                        <a class="btn btn-primary" href="{{ url('/cms_user_delete/'.$cms_user->id) }}" onclick="return confirm('{{__('Do you really want to delete?')}}')">{{__('Delete')}}</a>
                     </td>
                 </tr>
             @endforeach

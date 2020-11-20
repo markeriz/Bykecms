@@ -2,23 +2,19 @@
 
 @section('content')
 
-   <h1>Pradžia</h1>
+   <h1>{{__('Home')}}</h1>
    <p> 
-      Sveiki atvykę į interneto svetainės valdymo erdvę.
+      {{__('Welcome to Content Management System BYKE CMS')}}.
    </p>
    <p>
-      <b>Svetainės techniniai duomenys:</b>
+      <b>{{__('Your website contains')}}:</b>
       <br/>
-      Įrašų: <?php echo DB::table('bits')->count();?>
+      {{__('Bits')}}: <?php echo DB::table('bits')->count();?>
       <br/>
-      Nuotraukų: <?php echo DB::table('photos')->count();?>
+      {{__('Photos')}}: <?php echo DB::table('photos')->count();?>
       <br/>
-      Nustatymų: <?php echo DB::table('configs')->count();?>
+      {{__('Configurations')}}: <?php echo DB::table('configs')->count();?>
       <br/>
-      Žymės: <?php echo DB::table('tags')->count();?>
+      {{__('Tags')}}: <?php echo DB::table('tags')->count();?>
    </p>
-
-   <p> 
-      <label>Specifinis duomenų atvaizdavimas:</label> 
-      {{ Html::link('/cms_bits','Visų įrašų sąrašas') }}
 @stop

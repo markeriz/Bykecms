@@ -45,7 +45,7 @@ class CmsConfigsController extends Controller
 
         CmsConfig::create($request->all());
 
-        return redirect()->route('cms_configs.index')->with('success','Nustatymas sukurtas sėkmingai');
+        return redirect()->route('cms_configs.index')->with('success',__('Saved'));
     }
 
     /**
@@ -82,7 +82,7 @@ class CmsConfigsController extends Controller
 
         $cms_config->update($request->all());
 
-        return redirect()->route('cms_configs.index')->with('success','Nustatymas atnaujintas sėkmingai');
+        return redirect()->route('cms_configs.index')->with('success',__('Saved'));
     }
 
     /**
@@ -95,7 +95,7 @@ class CmsConfigsController extends Controller
     {
       $cms_config->delete();
 
-       return redirect()->route('cms_configs.index')->with('success','Nustatymas ištrintas sėkmingai');
+       return redirect()->route('cms_configs.index')->with('success',__('Saved'));
     }
 }
 

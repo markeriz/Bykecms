@@ -31,28 +31,28 @@
             <div class="row top-navigation"> 
                 <div class="col-md-12"> 
 
-                    {{ Html::link('/cms','Pradžia') }}
+                    {{ Html::link('/cms',__('Home')) }}
 
                     &nbsp;
 
-                    {{ Html::link('/cms_tags','Žymės') }}
+                    {{ Html::link('/cms_tags',__('Tags')) }}
 
                     &nbsp;
 
-                    {{ Html::link('/cms_configs','Nustatymai') }}
+                    {{ Html::link('/cms_configs',__('Configurations') ) }}
 
                     &nbsp;
 
-                    {{ Html::link('/cms_users','Vartotojai') }}
+                    {{ Html::link('/cms_users',__('Users')) }}
 
                     &nbsp;
 
-                    {{ Html::link('/','Atverti svetainę &raquo;', ['target'=>'_blank']) }}
+                    {{ Html::link('/',__('Open Website').' &raquo;', ['target'=>'_blank']) }}
 
                     <div style="float:right">
 
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Atsijungti
+                            {{__('Logout')}}
                         </a>
 
                     </div>
@@ -137,7 +137,7 @@
         </div>
         <script>
         $(".delete").on("submit", function(){
-            return confirm("Ar tikrai norite trinti?");
+            return confirm("{{__('Do you really want to delete?')}}");
         });
     </script>
 

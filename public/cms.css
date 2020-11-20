@@ -1,7 +1,7 @@
 body {
 font-family: 'Nunito';
 }
-input[type=text], textarea, input[type=select], select, .select {
+input[type=text], input[type=password], textarea, input[type=select], select, .select {
 padding:5px;
 font-size:15px;
 font-weight:400;

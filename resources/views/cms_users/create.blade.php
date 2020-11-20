@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Kurti</h1>
+    <h1>{{__('Create User')}}</h1>
 
     {!! Form::open(['url'=>'cms_users']) !!}
         @csrf

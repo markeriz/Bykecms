@@ -2,7 +2,7 @@
 
 @section('content')
 
-   <h1>Redaguoti įrašą</h1>
+   <h1>{{ __('Edit Bit') }}</h1>
 
    {!! Form::model($cms_bit, ['route' => ['cms_bits.update', $cms_bit->id]]) !!}
 

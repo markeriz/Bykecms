@@ -2,7 +2,7 @@
 
 @section('content')
 
-   <h1>Redaguoti nustatymą</h1>
+   <h1>{{__('Edit Configuration')}}</h1>
 
    {!! Form::model($cms_config, ['route' => ['cms_configs.update', $cms_config->id]]) !!}
 

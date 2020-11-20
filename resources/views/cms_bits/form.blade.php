@@ -1,7 +1,7 @@
 
 
 <div class="form-group">
-   <label>Pavadinimas</label>
+   <label>{{ __('Name') }}</label>
    {{ Form::text('name', $cms_bit->name) }}
 </div>
 <?php 
@@ -22,7 +22,7 @@
             }
         }
         ?>
-        {!! Form::label('tag_id', 'Žymė') !!}
+        {!! Form::label('tag_id', __('Tag')) !!}
         {{ Form::select('tag_id', $smags, $cms_tag->id, ['class'=>'select']) }}
     </div>
 <?php 
@@ -30,13 +30,13 @@
 ?>
 @elseif (!empty($parent_cms_bit))
     <div class="form-group">
-        {!! Form::label('parent_id', 'Priklauso blokeliui') !!}
+        {!! Form::label('parent_id', __('Belongs to')) !!}:
         {!! Form::hidden('parent_id', $parent_cms_bit->id) !!}
         {{$parent_cms_bit->name}}
     </div>
 @endif
 <div class="form-group">
-   <label>Tekstas</label>
+   <label>{{ __('Text') }}</label>
    {{ Form::textarea('text', $cms_bit->text, ['id'=>'trumbowyg-demo', 'style'=>'width:100%;']) }}
 </div>
 
@@ -45,23 +45,31 @@
         <div class="form-group">
             <?php 
             $bit_templates = \App\Models\CmsBitTemplate::all()->pluck('name', 'id')->toArray();
+            // Translate
+            foreach($bit_templates as $id=>$name) {
+                $b_translated[$id]=__($name);
+            }
             ?>
-            {!! Form::label('bit_template_id', 'Atvaizdavimas') !!}
-            {{ Form::select('bit_template_id', $bit_templates, $cms_bit->bit_template_id, ['class'=>'select']) }}
+            {!! Form::label('bit_template_id', __('Layout') ) !!}
+            {{ Form::select('bit_template_id', $b_translated, $cms_bit->bit_template_id, ['class'=>'select']) }}
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
         <?php 
         $bit_types = \App\Models\CmsBitType::orderBy('id', 'asc')->get()->pluck('name', 'id')->toArray();
+        // Translate
+        foreach($bit_types as $id=>$name) {
+            $bt_translated[$id]=__($name);
+        }
         ?>
-        {!! Form::label('bit_type_id', 'Tipas') !!}
-        {{ Form::select('bit_type_id', $bit_types, $cms_bit->bit_type_id, ['class'=>'select']) }}
+        {!! Form::label('bit_type_id', __('Bit Type') ) !!}
+        {{ Form::select('bit_type_id', $bt_translated, $cms_bit->bit_type_id, ['class'=>'select']) }}
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <label>Kaina, &euro;</label>
+            <label>{{ __('Price') }}, &euro;</label>
             {{ Form::text('price', $cms_bit->price) }}
         </div>
     </div>
@@ -71,11 +79,12 @@
     <hr/>
     <div class="form-group">
         
-            Blokelis {{ $parent_cms_bit->name }} yra nustatytas kaip prekė, tad šio blokelio atvaizdavime galite įjungti mygtuką: 
+            {{ __('Block') }} {{ $parent_cms_bit->name }} {{ __('is set as a product, so you can activate Buy button here')}}:
+            
         <br/>
         {!! Form::hidden('product_button', 0) !!}
         {!! Form::checkbox('product_button', 1, $cms_bit->product_button) !!}
-        {!! Form::label('product_button', 'Įjungti mygtuką "Pirkti"') !!}
+        {!! Form::label('product_button', __('Turn on button "Buy"')) !!}
     </div>
 @endif
 
@@ -94,21 +103,22 @@
 <div class="form-group">
    {!! Form::hidden('status', 0) !!}
    {!! Form::checkbox('status', 1, $cms_bit->status) !!}
-   {!! Form::label('status', 'Šis blokelis rodomas viešai') !!}
+   {!! Form::label('status', __('Show in website') ) !!}
 </div>
 
 <hr/>
 
 <div class="form-group gray-area">
     <label for="multiple_files">
-        Nuotraukų įkėlimas 
+        
+        {{ __('Upload Photos')}}
         <br/>
         <img src="{{url('/upload-photo.png')}}" style="width:80px; cursor: pointer;">
     </label>
     <input type="file" name="photos[]" multiple="1" id="multiple_files" style="border:none; background:none; padding:0; margin:0; display:none">
     <br/>
-    Nuotraukos dydis iki <b>10MB</b>.<br/>
-    Galimi formatai: <b>JPG</b>, <b>JPEG</b>, <b>PNG</b>.
+    {{__('Photo size can be up to 10Mb')}}<br/>
+    {{__('Allowed formats: jpg, jpeg, png.')}}
 
     <script type="text/javascript">
     //
@@ -121,7 +131,7 @@
         $.each(files, function(key, value) {
             // wrong file
             if (value['type']!='image/jpeg' && value['type']!='image/png' && value['type']!='image/gif') {
-                alert('Pasirinkote netinkamą nuotraukos formatą');
+                alert('{{__('Format is not allowed')}}');
             // success
             } else {
                 data.append('photos[]', value);
@@ -182,8 +192,10 @@
     @endif
 
     <div style="padding-top:14px; padding-bottom:7px;">
-        <b>Įkeltos nuotraukos.</b>
-        <br/>Rikiuoti galite paspaudę ant nuotraukos ir nutempę į norimą poziciją ir paspaudę "Išsaugoti".
+        <b>{{__('Uploaded Photos')}}</b>
+        <br/>
+        {{__('You can change photos order by clicking and dragging them. Click Save, to save new order!')}}
+        
     </div>
 
     <div class="loading" style="display:none; padding-bottom:1rem;"><img src="{{url('/loading.gif')}}"></div>
@@ -255,7 +267,7 @@
 </div> 
 
 <div class="form-group">
-   <button type="submit" class="btn">Išsaugoti</button>
+   <button type="submit" class="btn">{{__('Save')}}</button>
 </div>
 
 

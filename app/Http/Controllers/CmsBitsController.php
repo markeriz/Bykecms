@@ -82,9 +82,9 @@ class CmsBitsController extends Controller
 
         // Redirect by tag.
         if (!empty($parent_cms_bit)) {
-            return redirect('/cms_bits?parent_id='.$parent_cms_bit->id)->with('success','Įrašas sukurtas sėkmingai');
+            return redirect('/cms_bits?parent_id='.$parent_cms_bit->id)->with('success',__('Saved'));
         } else {
-            return redirect('/cms_bits?tag_id='.$request->input('tag_id'))->with('success','Įrašas sukurtas sėkmingai');
+            return redirect('/cms_bits?tag_id='.$request->input('tag_id'))->with('success',__('Saved'));
         }
         
     }
@@ -142,12 +142,12 @@ class CmsBitsController extends Controller
 
         // Redirect by tag.
         if ($cms_bit->parent_id!='') {
-            return redirect('/cms_bits?parent_id='.$cms_bit->parent_id)->with('success','Išsaugota sėkmingai');
+            return redirect('/cms_bits?parent_id='.$cms_bit->parent_id)->with('success',__('Saved'));
         } else {
-            return redirect('/cms_bits?tag_id='.$cms_bit->tag_id)->with('success','Išsaugota sėkmingai');
+            return redirect('/cms_bits?tag_id='.$cms_bit->tag_id)->with('success',__('Saved'));
         }
 
-        return redirect('/cms_bits?tag_id='.$cms_bit->tag_id)->with('success','Įrašas atnaujintas sėkmingai');
+        return redirect('/cms_bits?tag_id='.$cms_bit->tag_id)->with('success',__('Saved'));
     }
 
     // Delete
@@ -163,7 +163,7 @@ class CmsBitsController extends Controller
         }
         $tag_id = $cms_bit->tag_id;
 		$cms_bit->delete();
-        return back()->with('success','Įrašas ištrintas sėkmingai');
+        return back()->with('success',__('Deleted'));
     }
 
     // Save Positions

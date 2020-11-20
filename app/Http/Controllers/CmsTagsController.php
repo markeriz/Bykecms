@@ -53,7 +53,7 @@ class CmsTagsController extends Controller
 
         CmsTag::create($request->all());
 
-        return redirect()->route('cms_tags.index')->with('success','Žymė sukurta sėkmingai');
+        return redirect()->route('cms_tags.index')->with('success',__('Saved'));
     }
 
     /**
@@ -90,7 +90,7 @@ class CmsTagsController extends Controller
 
         $cms_tag->update($request->all());
 
-        return redirect()->route('cms_tags.index')->with('success','Žymė atnaujinta sėkmingai');
+        return redirect()->route('cms_tags.index')->with('success',__('Saved'));
     }
 
     /**
@@ -107,7 +107,7 @@ class CmsTagsController extends Controller
             $child->delete();
         }
 		$cms_tag->delete();
-        return back()->with('success','Žymė ištrinta sėkmingai');
+        return back()->with('success',__('Saved'));
     }
 
     public function save_positions(Request $request) {

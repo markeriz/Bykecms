@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+App::setLocale('en');
+
 // Auth
 Auth::routes();
 

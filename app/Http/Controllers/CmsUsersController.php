@@ -48,7 +48,7 @@ class CmsUsersController extends Controller
         $r['password'] = Hash::make($request->password);
         CmsUser::create($r);
 
-        return redirect()->route('cms_users.index')->with('success','Vartotojas sukurtas sėkmingai');
+        return redirect()->route('cms_users.index')->with('success',__('Saved'));
     }
 
     /**
@@ -86,7 +86,7 @@ class CmsUsersController extends Controller
         $r['password'] = Hash::make($request->password);
         $cms_user->update($r);
 
-        return redirect()->route('cms_users.index')->with('success','Vartotojas atnaujintas sėkmingai');
+        return redirect()->route('cms_users.index')->with('success',__('Saved'));
     }
 
     /**
@@ -99,7 +99,7 @@ class CmsUsersController extends Controller
     {
         $cms_user = \App\Models\CmsUser::findOrFail($id);
 		$cms_user->delete();
-        return redirect()->route('cms_users.index')->with('success','Vartotojas ištrintas sėkmingai');
+        return redirect()->route('cms_users.index')->with('success',__('Saved'));
     }
 
 }

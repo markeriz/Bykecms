@@ -57,9 +57,10 @@
             <div style="clear:both; height:3rem"></div>
 
         </div>
+
         <script>
         $(".delete").on("submit", function(){
-            return confirm("Ar tikrai norite trinti?");
+            return confirm('{{__('Do you really want to delete?')}}');
         });
     </script>
 

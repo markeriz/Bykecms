@@ -3,9 +3,9 @@
 @section('content')
 
     @if (!empty($cms_tag))
-        <h1>{{ $cms_tag->name }} <a class="btn" href="{{ route('cms_bits.create', ['tag_id'=>$cms_tag->id]) }}">Kurti blokelį</a></h1>
+        <h1>{{ $cms_tag->name }} <a class="btn" href="{{ route('cms_bits.create', ['tag_id'=>$cms_tag->id]) }}">{{__('Create Bit')}}</a></h1>
     @elseif (!empty($parent_cms_bit))
-        <h1>{{ $parent_cms_bit->name }} <a class="btn" href="{{ route('cms_bits.create', ['parent_id'=>$parent_cms_bit->id]) }}">Kurti blokelį</a></h1>
+        <h1>{{ $parent_cms_bit->name }} <a class="btn" href="{{ route('cms_bits.create', ['parent_id'=>$parent_cms_bit->id]) }}">{{__('Create Bit')}}</a></h1>
     @endif    
     
     @if (!empty($cms_bits[0]))
@@ -35,26 +35,30 @@
                                 <?php 
                                 $childs = \App\Models\CmsBit::where('parent_id', $cms_bit->id)->count();
                                 ?>
-                                <a class="btn btn-primary" href="{{ url('/cms_bits?parent_id='.$cms_bit->id) }}">Blokelių viduje ({{$childs}})</a>
-                                <a class="btn btn-primary" href="{{ route('cms_bits.edit',$cms_bit->id) }}">Redaguoti</a>
-                                <a class="btn btn-primary" href="{{ url('/cms_bit_delete/'.$cms_bit->id) }}" onclick="return confirm('Ar tikrai norite trinti?')">Trinti</a>
+                                <a class="btn btn-primary" href="{{ url('/cms_bits?parent_id='.$cms_bit->id) }}">{{__('Blocks inside')}}: {{$childs}}</a>
+                                <a class="btn btn-primary" href="{{ route('cms_bits.edit',$cms_bit->id) }}">{{__('Edit')}}</a>
+                                <a class="btn btn-primary" href="{{ url('/cms_bit_delete/'.$cms_bit->id) }}" onclick="return confirm('{{__('Do you really want to delete?')}}')">{{__('Delete')}}</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            {!! Form::submit('Išsaugoti naują rikiavimą', array('class'=>'btn btn-primary')) !!}
+            
 
             <p> 
-                * Spauskite ant pavadinimo ir laikydami tempkite norėdami pakeisti rikiavimą.
+                * {{__('Click on the name and drag to a position you want')}}.
             </p>
+            
+            {!! Form::submit(__('Save changed positions'), array('class'=>'btn btn-primary')) !!}
 
         {!! Form::close() !!}
 
     @else 
         <p> 
-            Blokelių nėra. Spauskite "Kurti blokelį".
+            
+            {{__('Nothing to show yet')}}.
+            
         </p>
     @endif
 
