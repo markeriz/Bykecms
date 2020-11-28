@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2020 at 09:47 AM
+-- Generation Time: Nov 28, 2020 at 07:44 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.23
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `byke_cms`
+-- Database: `bykecms`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +33,7 @@ CREATE TABLE `bits` (
   `parent_id` int DEFAULT NULL,
   `tag_id` int DEFAULT NULL,
   `bit_type_id` int DEFAULT NULL,
-  `bit_template_id` int DEFAULT NULL,
+  `bit_theme_id` int DEFAULT NULL,
   `name` tinytext,
   `slug` varchar(255) DEFAULT NULL,
   `description` text,
@@ -56,18 +56,26 @@ CREATE TABLE `bits` (
 -- Dumping data for table `bits`
 --
 
-INSERT INTO `bits` (`id`, `parent_id`, `tag_id`, `bit_type_id`, `bit_template_id`, `name`, `slug`, `description`, `text`, `price`, `old_price`, `code`, `status`, `homepage`, `popular`, `position`, `random`, `product_button`, `product_url`, `updated_at`, `created_at`) VALUES
-(1, NULL, 47, 2, NULL, 'Blueberries', 'blueberries', NULL, '<p>Blueberries are usually <a href=\"https://en.wikipedia.org/wiki/Prostrate_shrub\" title=\"\">prostrate</a> <a href=\"https://en.wikipedia.org/wiki/Shrub\" title=\"Shrub\">shrubs</a>\r\n that can vary in size from 10 centimeters (4 inches) to 4 meters (13 \r\nfeet) in height. In commercial production of blueberries, the species \r\nwith small, pea-size berries growing on low-level bushes are known as \r\n\"lowbush blueberries\" (synonymous with \"wild\").<br></p>', '10.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-19 16:58:19', '2020-11-19 16:47:44'),
-(2, NULL, 47, 2, NULL, 'Banana', 'banana', NULL, '<p>A banana is an elongated, edible fruit – botanically a berry[1][2] – produced by several kinds of large herbaceous flowering plants in the genus Musa.[3] In some countries, bananas used for cooking may be called \"plantains\", distinguishing them from dessert bananas.<br></p>', '13.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-19 16:58:07', '2020-11-19 16:51:41'),
-(3, NULL, 47, 2, NULL, 'Lime', 'lime', NULL, '<p>There are several species of citrus trees whose fruits are called limes, including the Key lime (Citrus aurantiifolia), Persian lime, kaffir lime, and desert lime. <br></p>', '5.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-19 16:57:58', '2020-11-19 16:57:42');
+INSERT INTO `bits` (`id`, `parent_id`, `tag_id`, `bit_type_id`, `bit_theme_id`, `name`, `slug`, `description`, `text`, `price`, `old_price`, `code`, `status`, `homepage`, `popular`, `position`, `random`, `product_button`, `product_url`, `updated_at`, `created_at`) VALUES
+(9, NULL, 48, 1, NULL, 'Contact Us', 'contact-us', NULL, '<p>This is Open Source Bykecms demo webstore.</p><p>All products are imported from <a href=\"https://www.schoolhouse.com\">SCHOOLHOUSE</a>.</p><p>Visit Bykecms homepage here <a href=\"https://bykecms.com\">Bykecms.com.</a><br></p>', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 13:12:24', '2020-11-28 11:11:33'),
+(5, NULL, 47, 2, NULL, 'Arne Jacobsen Alarm Clock - Green', 'arne-jacobsen-alarm-clock-green', NULL, '<p>Designed by famed Danish architect and designer Arne Jacobsen, this charmingly petite clock marries traditional and modern functionality. The old-school bell alarm may be silenced with a quick tap of the top, and an LED... <br></p>', '139.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 13:05:56', '2020-11-28 11:05:10'),
+(6, NULL, 47, 2, 2, 'Schoolhouse Electric Clock - Persimmon', 'schoolhouse-electric-clock-persimmon', NULL, '<p>Inspired by the scale and durability of industrial wall clocks. \r\nHand-assembled in our Portland factory, the Schoolhouse Electric Clock \r\nis constructed with a spun steel case, domed glass lens and steel dial. \r\nThe hands are...\r\n					</p>', '289.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 15:32:12', '2020-11-28 11:06:08'),
+(7, NULL, 47, 2, NULL, 'Schoolhouse Electric Clock - Industrial Yellow', 'schoolhouse-electric-clock-industrial-yellow', NULL, '<p>Inspired by the scale and durability of industrial wall clocks. \r\nHand-assembled in our Portland factory, the Schoolhouse Electric Clock \r\nis constructed with a spun steel case, domed glass lens and steel dial. \r\nThe hands are...\r\n					</p>', '289.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 11:07:01', '2020-11-28 11:07:01'),
+(8, NULL, 47, 2, 2, 'Flip Clock - Red', 'flip-clock-red', NULL, '<p>Crafted by one of the world\'s original flip clock manufacturers, in \r\nbusiness since 1956, this expertly made timepiece is a helpful analog \r\nreminder to put your phone down. Features design detailing true to its \r\nmid-century...\r\n					</p>', '99.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 15:32:18', '2020-11-28 11:07:31'),
+(10, NULL, 49, 2, NULL, 'Cherry Tomatoes Print', 'cherry-tomatoes-print', NULL, '<p>The Velvet + Wool Circle Pillow adds a pop of composed color to any \r\nseating arrangement or bed. Harvest colored velvet and orange wool play \r\ncounterpoint while the lush texture of the fabrics make both...\r\n					</p>', '99.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 11:16:07', '2020-11-28 11:16:07'),
+(11, NULL, 49, 2, NULL, 'Orange Velvet + Wool - Circle Pillow', 'orange-velvet-wool-circle-pillow', NULL, '<p>The Velvet + Wool Circle Pillow adds a pop of composed color to any \r\nseating arrangement or bed. Harvest colored velvet and orange wool play \r\ncounterpoint while the lush texture of the fabrics make both...\r\n					</p>', '99.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 11:17:27', '2020-11-28 11:17:27'),
+(12, NULL, 49, 2, NULL, 'Blue Grid Stitch - Lumbar Pillow', 'blue-grid-stitch-lumbar-pillow', NULL, '<p>Timeless elegance meets casual comfort in this heirloom-quality pillow \r\nmade from 100% cotton. Versatile and effortless, the Blue Grid Stitch \r\nPillow is perfect for mixing and matching with existing pieces \r\nthroughout the home. A classic...\r\n					</p>', '159.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 11:18:06', '2020-11-28 11:18:06'),
+(13, NULL, 49, 2, NULL, 'Schoolhouse Backed Utility Stool 18\"', 'schoolhouse-backed-utility-stool-18', NULL, '<p>Built to last, this industrial-strength welded steel stool is ready to \r\nbe put to work in any room of the house. An update of a classic, the \r\ndesign prioritizes comfort with an ergonomic stamped seat....\r\n					</p>', '249.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 13:09:11', '2020-11-28 11:18:45'),
+(14, NULL, 46, 1, NULL, 'SCHOLLHOUSE Products', 'schollhouse-products', NULL, '<p><span class=\"content pargraph-section\">Inside a 109-year-old brick \r\nfactory building in Portland, Oregon, our obsession with quality and \r\ndesign has compelled us to produce modern heirlooms the old-fashioned \r\nway. Here we manufacture our lighting and other wares; we design our \r\ncollections; we ship our finished creations and most importantly, we \r\ndream of what’s next while working collectively to create something \r\nbigger than ourselves. Many hands work in countless ways to bring each \r\nof our products to life, all under one roof.</span></p>', NULL, NULL, NULL, 1, NULL, NULL, 2, NULL, NULL, NULL, '2020-11-28 11:24:06', '2020-11-28 11:19:44'),
+(15, NULL, 46, 1, 3, 'Bykecms demo webstore', 'about-open-source-bykecms', NULL, '<p>Bykecms is a Content Mangement System for your website or webstore. It is completely free, minimalistic, easy to use and customize.</p><p>It is designed for developers who want to have all code under control and as simple as possible. Even to change completely CMS admin panel and functions by own needs. It is possible with Bykecms.<br></p>', NULL, NULL, NULL, 1, NULL, NULL, 1, NULL, NULL, NULL, '2020-11-28 13:27:36', '2020-11-28 11:23:57');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bit_templates`
+-- Table structure for table `bit_themes`
 --
 
-CREATE TABLE `bit_templates` (
+CREATE TABLE `bit_themes` (
   `id` int NOT NULL,
   `slug` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
@@ -76,10 +84,10 @@ CREATE TABLE `bit_templates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `bit_templates`
+-- Dumping data for table `bit_themes`
 --
 
-INSERT INTO `bit_templates` (`id`, `slug`, `name`, `updated_at`, `created_at`) VALUES
+INSERT INTO `bit_themes` (`id`, `slug`, `name`, `updated_at`, `created_at`) VALUES
 (1, 'text-photo', 'Text and Photo', '2020-10-22 19:24:41', '2020-10-22 19:24:41'),
 (2, 'photo-text', 'Photo and Text', '2020-10-22 19:24:41', '2020-10-22 19:24:41'),
 (3, 'text', 'Text Only', '2020-10-22 19:25:12', '2020-10-22 19:25:12'),
@@ -207,9 +215,11 @@ CREATE TABLE `configs` (
 --
 
 INSERT INTO `configs` (`id`, `slug`, `description`, `value`, `updated_at`, `created_at`) VALUES
-(1, 'website_title', 'Website Title', 'Fruit Shop', '2020-11-20 09:19:08', '2020-10-18 06:31:08'),
-(3, 'website_description', 'Website Description for Google, Facebook', 'New fruit shop', '2020-11-20 09:19:27', '2020-10-18 06:32:01'),
-(4, 'website_keywords', 'Website keywords for search engines', 'Blueberry', '2020-11-20 09:19:43', '2020-10-18 06:32:10');
+(1, 'web-title', 'Website Title', 'Bykecms', '2020-11-28 19:01:18', '2020-10-18 06:31:08'),
+(3, 'web-description', 'Website Description', 'Bykecms Demo Webstore', '2020-11-28 13:42:25', '2020-10-18 06:32:01'),
+(4, 'web-keywords', 'Website Keywords', 'open source cms, bykecms, bykecms demo', '2020-11-28 13:42:45', '2020-10-18 06:32:10'),
+(13, 'cms-title', 'Name of CMS', 'BykeCMS', '2020-11-28 19:01:40', '2020-11-28 13:40:47'),
+(14, 'cms-send-email-on-order', 'Send email after order', 'hi@bykecms.com', '2020-11-28 13:41:56', '2020-11-28 13:41:56');
 
 -- --------------------------------------------------------
 
@@ -325,9 +335,16 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `bit_id`, `tag_id`, `name`, `slug`, `filename`, `filesize_original_kb`, `filename_original`, `position`, `status`, `random`, `updated_at`, `created_at`) VALUES
-(1, 1, NULL, NULL, NULL, 'e12377bbfb720cb3e957dab5eefe45fd.jpg', NULL, NULL, 0, NULL, NULL, '2020-11-19 16:58:19', '2020-11-19 16:47:42'),
-(2, 2, NULL, NULL, NULL, '9180b9bd71b5c93a4094da5c9160dbf8.jpg', NULL, NULL, 1, NULL, NULL, '2020-11-19 16:58:07', '2020-11-19 16:51:37'),
-(3, 3, NULL, NULL, NULL, '1d301fbc80385d366fe362cb92bc7ab4.jpg', NULL, NULL, 2, NULL, NULL, '2020-11-19 16:57:58', '2020-11-19 16:57:19');
+(9, 5, NULL, NULL, NULL, '033ef220ac8e357abfcc8944cf691114.jpg', NULL, NULL, 8, NULL, NULL, '2020-11-28 13:05:56', '2020-11-28 11:05:05'),
+(11, 6, NULL, NULL, NULL, 'd29158c10f32b3c3f05792b3131507c1.jpg', NULL, NULL, 10, NULL, NULL, '2020-11-28 15:32:12', '2020-11-28 11:06:05'),
+(13, 7, NULL, NULL, NULL, '0e84ac8b20687b912b06e73f63533995.jpg', NULL, NULL, 12, NULL, NULL, '2020-11-28 11:07:01', '2020-11-28 11:06:57'),
+(14, 8, NULL, NULL, NULL, '0aa0a2ef445fb82359f62aea3b857760.jpg', NULL, NULL, 13, NULL, NULL, '2020-11-28 15:32:18', '2020-11-28 11:07:29'),
+(15, 10, NULL, NULL, NULL, 'c1d02237271fb66cf11b8095478c67fd.jpg', NULL, NULL, 14, NULL, NULL, '2020-11-28 11:16:07', '2020-11-28 11:16:05'),
+(21, 11, NULL, NULL, NULL, 'f4ae17384c6e7a57f4ed3c96d6ea9603.jpg', NULL, NULL, 20, NULL, NULL, '2020-11-28 11:17:27', '2020-11-28 11:17:22'),
+(22, 12, NULL, NULL, NULL, '84e3135f3995562608dfebe394dc98d4.jpg', NULL, NULL, 21, NULL, NULL, '2020-11-28 11:18:06', '2020-11-28 11:18:04'),
+(23, 13, NULL, NULL, NULL, 'd091116408d9a38e5666d3cb2b121860.jpg', NULL, NULL, 22, NULL, NULL, '2020-11-28 13:09:11', '2020-11-28 11:18:43'),
+(25, 14, NULL, NULL, NULL, '77de07392be6dcffe7218ff1643bdf10.jpg', NULL, NULL, 24, NULL, NULL, '2020-11-28 11:22:40', '2020-11-28 11:20:54'),
+(26, 14, NULL, NULL, NULL, '4f7a66d429755a6aebcf1a2cc1bbdc88.jpg', NULL, NULL, 25, NULL, NULL, '2020-11-28 11:22:40', '2020-11-28 11:22:36');
 
 -- --------------------------------------------------------
 
@@ -391,8 +408,9 @@ CREATE TABLE `tags` (
 
 INSERT INTO `tags` (`id`, `tag_type_id`, `parent_id`, `deep`, `name`, `slug`, `description`, `keywords`, `status`, `home`, `position`, `updated_at`, `created_at`) VALUES
 (46, NULL, NULL, NULL, 'Home', 'home', NULL, NULL, 1, 1, 1, '2020-11-19 16:46:41', '2020-11-19 16:46:24'),
-(47, NULL, NULL, NULL, 'Buy Fruits', 'buy-fruits', NULL, NULL, 1, 0, 2, '2020-11-19 16:46:41', '2020-11-19 16:46:38'),
-(48, NULL, NULL, NULL, 'Contact', 'contact', NULL, NULL, 1, 0, 48, '2020-11-19 16:46:47', '2020-11-19 16:46:47');
+(47, NULL, NULL, NULL, 'Clocks', 'buy-fruits', NULL, NULL, 1, 0, 2, '2020-11-28 11:03:50', '2020-11-19 16:46:38'),
+(48, NULL, NULL, NULL, 'Contact', 'contact', NULL, NULL, 1, 0, 4, '2020-11-28 11:14:56', '2020-11-19 16:46:47'),
+(49, NULL, NULL, NULL, 'Interior', 'interior', NULL, NULL, 1, 0, 3, '2020-11-28 11:14:56', '2020-11-28 11:14:52');
 
 -- --------------------------------------------------------
 
@@ -440,7 +458,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `bit_rights`, `tag_rights`, `cart_rights`, `cart_edit_rights`, `client_rights`, `client_edit_rights`, `webmaster_rights`, `superadmin_rights`, `created_at`, `updated_at`) VALUES
-(6, 'Gediminas Šukys', 'hi@bykecms.com', NULL, '$2y$10$ffP14bje7mYLpvcl63hXJ.yxDR8qoNxTmzj9RqAiSjMEqF.WT4maS', NULL, NULL, 0, 0, 0, 0, 0, 1, 0, '2020-11-20 07:46:34', '2020-11-20 07:46:34');
+(6, 'Webmaster', 'hi@bykecms.com', NULL, '$2y$10$ffP14bje7mYLpvcl63hXJ.yxDR8qoNxTmzj9RqAiSjMEqF.WT4maS', 'IehTL8LdbvPdKExuibcUn8nRsfr6oyUbLVCHg8e5kMkqvX35sPof7TqcctkY', NULL, 0, 0, 0, 0, 0, 1, 0, '2020-11-20 07:46:34', '2020-11-20 07:46:34');
 
 --
 -- Indexes for dumped tables
@@ -454,9 +472,9 @@ ALTER TABLE `bits`
   ADD KEY `price` (`price`);
 
 --
--- Indexes for table `bit_templates`
+-- Indexes for table `bit_themes`
 --
-ALTER TABLE `bit_templates`
+ALTER TABLE `bit_themes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -565,12 +583,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bits`
 --
 ALTER TABLE `bits`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `bit_templates`
+-- AUTO_INCREMENT for table `bit_themes`
 --
-ALTER TABLE `bit_templates`
+ALTER TABLE `bit_themes`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
@@ -601,7 +619,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `configs`
 --
 ALTER TABLE `configs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -631,7 +649,7 @@ ALTER TABLE `payment_types`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `photo_copies`
@@ -649,7 +667,7 @@ ALTER TABLE `photo_sizes`
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `tag_types`
