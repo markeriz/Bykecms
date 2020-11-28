@@ -1,7 +1,12 @@
+/* UNIVERSAL */
 body {
 font-family: 'Nunito';
+font-weight:300;
+font-size:18px;
+margin: 0;
+padding: 0;
 }
-input[type=text], input[type=password], textarea, input[type=select], select, .select {
+input[type=text], textarea, input[type=select], select, .select {
 padding:5px;
 font-size:15px;
 font-weight:400;
@@ -22,21 +27,17 @@ th, td {
 padding:5px;
 text-align:left;
 }
-/* UNIVERSAL */
-html,
-body {
-height: 100%;
-width: 100%;
-margin: 0;
-padding: 0;
-left: 0;
-top: 0;
-font-size: 100%;
-}
+  td {
+  border-bottom:1px solid rgb(230,230,230);
+  }
+  tr:last-child td {
+    border:none;
+  }
+
 /* ROOT FONT STYLES */
 * {
 font-family: 'Lato', Helvetica, sans-serif;
-color: #333447;
+color: #222;
 line-height: 1.5;
 }
 /* TYPOGRAPHY */
@@ -74,10 +75,16 @@ margin-bottom:1rem;
 }
 a, a:visited, a:active, a:active {
   text-decoration:none;
-  color:rgb(120,120,120);
+  color:red;
   }
+    a.black {
+    color:black;
+    }
+    a.gray, .gray {
+    color:#888;
+    }
     a:hover {
-    color:#3498db;
+    color:black;
     }
 .label {
 color:#999;
@@ -133,9 +140,9 @@ margin-bottom:1rem;
 padding-bottom:1rem;
 }
 .btn {
-background:#3498db ; 
+background:white; 
 border-radius:5px; 
-border:none;
+border:1px solid red;
 font-size:15px;
 font-family:sans-serif;
 display:inline-block;
@@ -147,11 +154,17 @@ min-height:0;
 text-decoration: none;
 cursor:pointer;
 }
+
   .btn, .btn a, .btn:visited, .btn:link, .btn:hover, .btn a:hover {
-  color:white;
+  color:red;
+  }
+  .btn.btn-black, .btn.btn-black:hover {
+  border:1px solid black;
+  color:black;
   }
   .btn:hover {
-    background:#0078db ; 
+  border:1px solid black; 
+  color:black;
   }
    @media only screen and (min-width: 60em) { /* 960px */
      .container {

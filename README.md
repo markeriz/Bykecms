@@ -11,3 +11,7 @@ We are trying to reinvent the bike in Content Management Systems area.
 5. Login to BYKECMS at http://localhost/bykecms/public/login with `hi@bykecms.com/TheBestWebEngine`
 6. Control Panel is at http://localhost/bykecms/public/cms
 7. You are done.
+
+### Changing CMS language
+
+Change `App::setLocale('en')` setting in `/routes/web.php`. Available languages: `en`, `lt`.

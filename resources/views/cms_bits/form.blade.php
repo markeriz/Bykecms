@@ -44,14 +44,14 @@
     <div class="col-md-6">
         <div class="form-group">
             <?php 
-            $bit_templates = \App\Models\CmsBitTemplate::all()->pluck('name', 'id')->toArray();
+            $bit_themes = \App\Models\CmsBitTheme::all()->pluck('name', 'id')->toArray();
             // Translate
-            foreach($bit_templates as $id=>$name) {
+            foreach($bit_themes as $id=>$name) {
                 $b_translated[$id]=__($name);
             }
             ?>
-            {!! Form::label('bit_template_id', __('Layout') ) !!}
-            {{ Form::select('bit_template_id', $b_translated, $cms_bit->bit_template_id, ['class'=>'select']) }}
+            {!! Form::label('bit_theme_id', __('Layout') ) !!}
+            {{ Form::select('bit_theme_id', $b_translated, $cms_bit->bit_theme_id, ['class'=>'select']) }}
         </div>
     </div>
     <div class="col-md-6">

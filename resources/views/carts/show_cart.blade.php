@@ -96,7 +96,7 @@
          <thead>
              <tr>
                  <td>
-                     <button type="submit" class="btn">
+                     <button type="submit" class="btn btn-black">
                         <i class="fas fa-sync-alt"></i>&nbsp;
                         Recalculate Quantities
                      </button>
@@ -169,7 +169,7 @@
             <thead>
                 <tr>
                     <td>
-                        <button type="submit" class="btn">
+                        <button type="submit" class="btn btn-black">
                             <i class="fas fa-sync-alt"></i>&nbsp;
                             Recalculate Quantities
                         </button>
@@ -203,10 +203,10 @@
 
       <div style="padding-top:1rem; line-height:150%;" id="options_field">
           <div>
-              <button type="submit" id="person_fields_btn" class="btn" style="float:right">Buy as a private person &rarr;</button>
+              <button type="submit" id="person_fields_btn" class="btn btn-black" style="float:right">Buy as a private person &rarr;</button>
           </div>
           <div style="clear:both;">
-              <button type="submit" id="company_fields_btn" class="btn" style="float:right">Buy as a company &rarr;</button>
+              <button type="submit" id="company_fields_btn" class="btn btn-black" style="float:right">Buy as a company &rarr;</button>
           </div>
       </div>
 

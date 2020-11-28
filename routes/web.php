@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,44 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-App::setLocale('en');
-
 // Auth
 Auth::routes();
 
 // Home
 Route::get('/', 'App\Http\Controllers\PagesController@home')->name('home');
 
-use Illuminate\Support\Facades\Auth;
-
-//
-// CMS
-//
-//if (\Auth::check()) {
-
-    // Resources
-    Route::resources([
-        'cms_bits' => App\Http\Controllers\CmsBitsController::class,
-        'cms_configs' => App\Http\Controllers\CmsConfigsController::class,
-        'cms_tags' => App\Http\Controllers\CmsTagsController::class,
-        'cms_users' => App\Http\Controllers\CmsUsersController::class
-    ]);
-
-    // Cms Homepage
-    Route::get('/cms', 'App\Http\Controllers\CmsPagesController@home');
-
-    // CmsTags
-    Route::get('/cms_tag_delete/{id}', 'App\Http\Controllers\CmsTagsController@delete');
-    Route::post('/cms_tag_positions', 'App\Http\Controllers\CmsTagsController@save_positions');
-
-    // CmsBits
-    Route::get('/cms_bit_delete/{id}', 'App\Http\Controllers\CmsBitsController@delete');
-    Route::post('/cms_bit_positions', 'App\Http\Controllers\CmsBitsController@save_positions');
-
-    // CmsPhoto
-    Route::get('/cms_photos/destroy/{id}', 'App\Http\Controllers\CmsPhotosController@destroy');
-    Route::post('/cms_photos/upload/', 'App\Http\Controllers\CmsPhotosController@upload');
-//}
+// Set Website Language
+Route::get('/set_language', 'App\Http\Controllers\PagesController@set_language');
 
 // Cart
 Route::post('/change_quantity', 'App\Http\Controllers\CartsController@change_quantity');
@@ -59,11 +30,36 @@ Route::get('/remove_item/{id}', 'App\Http\Controllers\CartsController@remove_ite
 Route::get('/add-to-cart/{id}', 'App\Http\Controllers\CartsController@add_to_cart');
 Route::post('/create_cart', 'App\Http\Controllers\CartsController@create_cart');
 
-/*
-Route::get('flights', function () {
-    // Only authenticated users may enter...
-})->middleware('auth');
-*/
+    //
+    // CMS Routes
+    //
+    
+    // Change Language of CMS here. Available: en, lt.
+    App::setLocale('en');
 
-// App, Categories
+    // Set CMS Language
+    Route::get('/set_cms_language', 'App\Http\Controllers\CmsPagesController@set_language')->middleware('auth');;
+
+    // Resources
+    Route::resource('cms_bits', App\Http\Controllers\CmsBitsController::class)->middleware('auth');
+    Route::resource('cms_configs', App\Http\Controllers\CmsConfigsController::class)->middleware('auth');
+    Route::resource('cms_tags', App\Http\Controllers\CmsTagsController::class)->middleware('auth');
+    Route::resource('cms_users', App\Http\Controllers\CmsUsersController::class)->middleware('auth');
+
+    // Cms Homepage
+    Route::get('/cms', 'App\Http\Controllers\CmsPagesController@home')->middleware('auth');
+
+    // CmsTags
+    Route::get('/cms_tag_delete/{id}', 'App\Http\Controllers\CmsTagsController@delete')->middleware('auth');
+    Route::post('/cms_tag_positions', 'App\Http\Controllers\CmsTagsController@save_positions')->middleware('auth');
+
+    // CmsBits
+    Route::get('/cms_bit_delete/{id}', 'App\Http\Controllers\CmsBitsController@delete')->middleware('auth');
+    Route::post('/cms_bit_positions', 'App\Http\Controllers\CmsBitsController@save_positions')->middleware('auth');
+
+    // CmsPhoto
+    Route::get('/cms_photos/destroy/{id}', 'App\Http\Controllers\CmsPhotosController@destroy')->middleware('auth');
+    Route::post('/cms_photos/upload/', 'App\Http\Controllers\CmsPhotosController@upload')->middleware('auth');
+
+// Rendering page, if other routes didn't met condition
 Route::get('/{slug}', 'App\Http\Controllers\PagesController@home');

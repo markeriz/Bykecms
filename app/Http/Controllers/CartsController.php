@@ -39,7 +39,7 @@ class CartsController extends Controller {
       Session::push('bits', $bit_session);
       //Session::forget('bits');
 
-      return redirect('/prekiu-krepselis')->with('success', 'Removed successfully.');
+      return redirect('/prekiu-krepselis')->with('success', 'Added Successfully');
     }
 
     //
@@ -98,16 +98,18 @@ class CartsController extends Controller {
             Session::forget('bits');
             
             //
-            // Send Mail
+            // Send Mail for Webstore Owner
             //
-            \Mail::to('sukys.gediminas@gmail.com')->send(new SendMailable($cart));
             if (config('app.env') === 'local') {
-                //\Mail::to('gediminas.web@gmail.com')->send(new SendMailable($cart));
+                \Mail::to(c('cms-send-email-on-order'))->send(new SendMailable($cart));
             } else {
                 
-                //\Mail::to('gediminas.web@gmail.com')->send(new SendMailable($cart));
+                \Mail::to(c('cms-send-email-on-order'))->send(new SendMailable($cart));
             }
             
+            // 
+            // Send Mail for Client
+            //
             //\Mail::to($cart->email)->send(new ClientCart($cart->id));
 
             return view('carts/create_cart', compact('cart'));
@@ -137,7 +139,7 @@ class CartsController extends Controller {
             Session::put('bits.'.$bit_id.'.quantity', $bit_value);
         }
         debug(Session::get('bits'));
-        return back()->with('success', 'Quantity has been changed.');
+        return back()->with('success', 'Quantity has been changed');
     }
 
     //
@@ -145,7 +147,7 @@ class CartsController extends Controller {
     //
     public function remove_item(Request $request, $id) {
         Session::forget('bits.'.$id);
-        return back()->with('success', 'Item has been removed.');
+        return back()->with('success', 'Removed Successfully');
     }
 
 }

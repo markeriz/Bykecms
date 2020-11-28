@@ -29,6 +29,7 @@ class CmsBit extends Model {
         'parent_id',
         'tag_id',
         'bit_type_id',
+        'bit_theme_id',
         'photo_view_id',
         'product_button',
         'product_url',
@@ -46,8 +47,8 @@ class CmsBit extends Model {
         return $this->hasMany('App\Models\CmsPhoto', 'bit_id')->orderBy('position', 'desc');
     }
 
-    public function cms_bit_template () {
-        return $this->hasMany('App\Models\CmsBitTemplate', 'bit_id')->orderBy('position', 'desc');
+    public function cms_bit_theme () {
+        return $this->hasMany('App\Models\CmsBitTheme', 'bit_id')->orderBy('position', 'desc');
     }
 
     // Duplicating same relations, because of not creating two models
@@ -64,8 +65,8 @@ class CmsBit extends Model {
         return $this->hasMany('App\Models\CmsPhoto', 'bit_id')->orderBy('position', 'desc');
     }
 
-    public function bit_template () {
-        return $this->belongsTo('App\Models\CmsBitTemplate', 'bit_template_id');
+    public function bit_theme () {
+        return $this->belongsTo('App\Models\CmsBitTheme', 'bit_theme_id');
     }
 
 }

@@ -4,7 +4,7 @@
 
    <h1>{{__('Home')}}</h1>
    <p> 
-      {{__('Welcome to Content Management System BYKE CMS')}}.
+      {{__('Welcome to Content Management System')}} {{c('cms-title')}}.
    </p>
    <p>
       <b>{{__('Your website contains')}}:</b>

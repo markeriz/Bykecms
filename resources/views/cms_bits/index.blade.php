@@ -18,16 +18,30 @@
                 <tbody>
                     @foreach ($cms_bits as $cms_bit)
                         <tr>
-                            <td>
-                                {{ $cms_bit->name }}
+                            <td style="padding-right:0;">
+                                @if (!empty($cms_bit->photo))
+                                    <a href="{{ route('cms_bits.edit',$cms_bit->id) }}">
+                                        <img src="{{ url('/nuotraukos/'.$cms_bit->photo->id.'/'.$cms_bit->photo->filename) }}" style="height:40px;">
+                                    </a>
+                                @endif
+                            </td>
+                            <td style="padding-left:0;">
+                                <a href="{{ route('cms_bits.edit',$cms_bit->id) }}" class="black">
+                                    {{ $cms_bit->name }}
+
+                                </a>
                                 @if ($cms_bit->bit_type_id==2)
                                     <span style="font-size:100%"><i class="fas fa-shopping-basket"></i></span>
                                 @endif
-                                <p>
-                                    @foreach($cms_bit->cms_photos as $photo)
-                                        <img src="{{ url('/nuotraukos/'.$photo->id.'/'.$photo->filename) }}" style="height:30px; opacity:0.5">
-                                    @endforeach
-                                </p>
+
+                                @if (count($cms_bit->cms_photos)>1)
+                                    <p>
+                                        @foreach($cms_bit->cms_photos as $photo)
+                                            <img src="{{ url('/nuotraukos/'.$photo->id.'/'.$photo->filename) }}" style="height:30px; opacity:0.5">
+                                        @endforeach
+                                    </p>
+                                @endif 
+
                                 {!! Form::hidden("bits[$cms_bit->id]", $cms_bit->id) !!}
                             </td>
                             <td>
@@ -35,9 +49,12 @@
                                 <?php 
                                 $childs = \App\Models\CmsBit::where('parent_id', $cms_bit->id)->count();
                                 ?>
-                                <a class="btn btn-primary" href="{{ url('/cms_bits?parent_id='.$cms_bit->id) }}">{{__('Blocks inside')}}: {{$childs}}</a>
-                                <a class="btn btn-primary" href="{{ route('cms_bits.edit',$cms_bit->id) }}">{{__('Edit')}}</a>
-                                <a class="btn btn-primary" href="{{ url('/cms_bit_delete/'.$cms_bit->id) }}" onclick="return confirm('{{__('Do you really want to delete?')}}')">{{__('Delete')}}</a>
+                                
+                                    <a href="{{ url('/cms_bits?parent_id='.$cms_bit->id) }}">{{$childs}} {{__('Blocks')}} </a>
+                                    &nbsp;
+                                
+ 
+                                <a href="{{ url('/cms_bit_delete/'.$cms_bit->id) }}" onclick="return confirm('{{__('Do you really want to delete?')}}')">{{__('Delete')}}</a>
                             </td>
                         </tr>
                     @endforeach
@@ -50,8 +67,8 @@
                 * {{__('Click on the name and drag to a position you want')}}.
             </p>
             
-            {!! Form::submit(__('Save changed positions'), array('class'=>'btn btn-primary')) !!}
-
+            <button class="btn btn-black"><i class="fas fa-sync-alt"></i> {{__('Save changed positions')}}</button>
+            
         {!! Form::close() !!}
 
     @else 

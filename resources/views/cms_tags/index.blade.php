@@ -56,7 +56,7 @@
                 * {{__('Click on the name and drag to a position you want')}}.
             </p>
             
-            {!! Form::submit(__('Save changed positions'), array('class'=>'btn btn-primary')) !!}
+            <button class="btn btn-black"><i class="fas fa-sync-alt"></i> {{__('Save changed positions')}}</button>
 
         {!! Form::close() !!}
 

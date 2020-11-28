@@ -7,14 +7,13 @@
         {{-- Rendering Content --}}
 
         <p>
-            @if (!empty($bit->bit_template))
-                @include('_bit_templates.'.$bit->bit_template['slug'])
+            @if (!empty($bit->bit_theme))
+                @include('_bit_themes.'.$bit->bit_theme['slug'])
             @else 
-                @include('_bit_templates.text-photo')
+                @include('_bit_themes.text-photo')
             @endif 
             <div class="content-block-separator"></div>
         </p>
-        
 
     @endforeach
 
