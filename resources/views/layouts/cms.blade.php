@@ -44,6 +44,10 @@ if (Session::get('cms_language_code')=='') {
 
                     &nbsp;
 
+                    {{ Html::link('/cms_carts',__('Orders'), ['class'=>'gray']) }}
+
+                    &nbsp;
+
                     {{ Html::link('/cms_configs',__('Configs'), ['class'=>'gray']) }}
 
                     &nbsp;

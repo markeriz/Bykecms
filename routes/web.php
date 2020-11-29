@@ -25,7 +25,7 @@ Route::get('/set_language', 'App\Http\Controllers\PagesController@set_language')
 
 // Cart
 Route::post('/change_quantity', 'App\Http\Controllers\CartsController@change_quantity');
-Route::get('/prekiu-krepselis', 'App\Http\Controllers\CartsController@show_cart');
+Route::get('/cart', 'App\Http\Controllers\CartsController@cart');
 Route::get('/remove_item/{id}', 'App\Http\Controllers\CartsController@remove_item');
 Route::get('/add-to-cart/{id}', 'App\Http\Controllers\CartsController@add_to_cart');
 Route::post('/create_cart', 'App\Http\Controllers\CartsController@create_cart');
@@ -61,5 +61,16 @@ Route::post('/create_cart', 'App\Http\Controllers\CartsController@create_cart');
     Route::get('/cms_photos/destroy/{id}', 'App\Http\Controllers\CmsPhotosController@destroy')->middleware('auth');
     Route::post('/cms_photos/upload/', 'App\Http\Controllers\CmsPhotosController@upload')->middleware('auth');
 
+    //
+    // CMS Carts
+    //
+    Route::resource('/cms_carts', 'App\Http\Controllers\CmsCartsController')->middleware('auth');
+    Route::get('/cms_carts/destroy/{id}', 'App\Http\Controllers\CmsCartsController@destroy')->middleware('auth');
+    Route::get('/order/{hash}', 'App\Http\Controllers\CartsController@order');
+
 // Rendering page, if other routes didn't met condition
 Route::get('/{slug}', 'App\Http\Controllers\PagesController@home');
+
+// Echo Bit
+Route::get('/bit/{slug}', 'App\Http\Controllers\PagesController@bit');
+

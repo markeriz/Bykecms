@@ -130,9 +130,9 @@ margin-left: auto;
 margin-right: auto;
 }
 .alert {
-background: #d6eaf8;
+background: white;
 padding:1rem;
-border:1px solid  #aed6f1;
+border:1px solid  red;
 border-radius:5px;
 margin-bottom:1rem;
 }

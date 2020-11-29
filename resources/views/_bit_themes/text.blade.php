@@ -1,5 +1,9 @@
 @if (!empty($bit->name))
-  <h2>{{ $bit->name }}</h2>
+    <h2>
+        <a href="{{ url('/bit/'.$bit->slug) }}" class="black">
+            {{ $bit->name }}
+        </a>
+    </h2>
 @endif
 
 <div class="row bit"> 

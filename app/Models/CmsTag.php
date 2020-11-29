@@ -18,7 +18,8 @@ class CmsTag extends Model {
     public function sluggable() {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'name',
+                'onUpdate' => true
             ]
         ];
     }

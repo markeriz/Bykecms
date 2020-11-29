@@ -14,6 +14,7 @@ class CmsConfig extends Model {
     use HasFactory;
 
     protected $table = 'configs';
+    public $timestamps = false;
 
     protected $fillable = [
         'slug',

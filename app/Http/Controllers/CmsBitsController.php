@@ -156,7 +156,7 @@ class CmsBitsController extends Controller
         $cms_bit = \App\Models\CmsBit::findOrFail($id);
         $photos = \App\Models\CmsPhoto::where('bit_id', $id)->get();
         foreach($photos as $photo) {
-            $dir = public_path('nuotraukos').'/'.$photo->id;
+            $dir = public_path('photos').'/'.$photo->id;
 		    array_map('unlink', glob("$dir/*.*"));
 		    rmdir($dir);
             $photo->delete();

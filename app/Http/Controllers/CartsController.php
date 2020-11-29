@@ -8,17 +8,32 @@ use Debugbar;
 use Session;
 
 use Illuminate\Support\Facades\Mail;
-use App\mail\SendMailable;
-//use App\mail\ClientCart;
+use App\Mail\OwnerCartSuccess;
+use App\Mail\ClientCartSuccess;
 
 
 class CartsController extends Controller {
 
-    public function show_bill($hash) {
-        $cms_cart = \App\Models\CmsCart::where('nb', $hash)->first();
+    //
+    // Show Cart
+    //
+    public function cart(Request $request) {
+        Debugbar::info($request->path());
+        $page_title = 'Cart';
+        $noindex = 1;
+
+        return view('carts.cart', compact('page_title', 'noindex'));
+    }
+
+    //
+    // Show Order - From CMS and with Hash Link
+    //
+    public function order($hash) {
+        $cms_cart = \App\Models\CmsCart::where('hash', $hash)->first();
         $page_title = 'Bill';
         $noindex = 1;
-        return view('carts.show_bill',compact('cms_cart', 'page_title', 'noindex'));
+
+        return view('carts.order',compact('cms_cart', 'page_title', 'noindex'));
     }
 
     //
@@ -28,7 +43,7 @@ class CartsController extends Controller {
       $bit = \App\Models\CmsBit::find($request->id);
 
       //
-      // Add to cart if we have all needed parameters
+      // Add to Session
       //
       $bit_session = array(
           'id'=>$request->id,
@@ -36,10 +51,26 @@ class CartsController extends Controller {
           'photo_id'=>$bit->photo->id
           //'height_id'=>$request['height_id']
       );
-      Session::push('bits', $bit_session);
+
+      // Check for duplicate (Until products with features will be activated)
+      $sbits = Session::get('bits'); 
+      if (!empty($sbits)) {
+        foreach ($sbits as $key=>$b) {
+            if ($b['id'] == $request->id) {
+                $duplicate = true;
+            }
+        }
+      }
+
+      // Save to Session
+      if (empty($duplicate)) {
+        Session::push('bits', $bit_session);
+      }
+
+      // Testing
       //Session::forget('bits');
 
-      return redirect('/prekiu-krepselis')->with('success', 'Added Successfully');
+      return redirect('/cart')->with('success', 'Added Successfully');
     }
 
     //
@@ -68,7 +99,7 @@ class CartsController extends Controller {
             $cart->client_note = $request->client_note;
             $cart->hash = hash('ripemd160', time());
             if ($request->ip()!='::1') {
-                $cart->ip = $request->ip();
+                //$cart->ip = $request->ip();
             }
             // Get Unique Nb
             $unique = \App\Models\CmsCart::orderBy('number', 'desc')->first();
@@ -100,35 +131,26 @@ class CartsController extends Controller {
             //
             // Send Mail for Webstore Owner
             //
-            if (config('app.env') === 'local') {
-                \Mail::to(c('cms-send-email-on-order'))->send(new SendMailable($cart));
-            } else {
-                
-                \Mail::to(c('cms-send-email-on-order'))->send(new SendMailable($cart));
-            }
-            
+            // if (config('app.env') === 'local') {
+            \Mail::to(c('web-send-email-on-order'))->send(new OwnerCartSuccess($cart));
+
             // 
             // Send Mail for Client
             //
-            //\Mail::to($cart->email)->send(new ClientCart($cart->id));
+            \Mail::to($cart->email)->send(new ClientCartSuccess($cart));
 
-            return view('carts/create_cart', compact('cart'));
+            return view('carts/cart_finish', compact('cart'));
+
         } else {
-            return view('carts/create_cart_fail');
+
+            $error = true;
+            return view('carts/cart_finish', compact('error'));
         }
 
         
     } 
 
-    //
-    // Show Cart
-    //
-    public function show_cart(Request $request) {
-        Debugbar::info($request->path());
-        $page_title = 'Cart';
-        $noindex = 1;
-        return view('carts/show_cart', compact('page_title', 'noindex'));
-    }
+
 
     //
     // Change Quantity

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2020 at 07:44 PM
+-- Generation Time: Nov 29, 2020 at 10:42 AM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.23
 
@@ -58,7 +58,7 @@ CREATE TABLE `bits` (
 
 INSERT INTO `bits` (`id`, `parent_id`, `tag_id`, `bit_type_id`, `bit_theme_id`, `name`, `slug`, `description`, `text`, `price`, `old_price`, `code`, `status`, `homepage`, `popular`, `position`, `random`, `product_button`, `product_url`, `updated_at`, `created_at`) VALUES
 (9, NULL, 48, 1, NULL, 'Contact Us', 'contact-us', NULL, '<p>This is Open Source Bykecms demo webstore.</p><p>All products are imported from <a href=\"https://www.schoolhouse.com\">SCHOOLHOUSE</a>.</p><p>Visit Bykecms homepage here <a href=\"https://bykecms.com\">Bykecms.com.</a><br></p>', NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 13:12:24', '2020-11-28 11:11:33'),
-(5, NULL, 47, 2, NULL, 'Arne Jacobsen Alarm Clock - Green', 'arne-jacobsen-alarm-clock-green', NULL, '<p>Designed by famed Danish architect and designer Arne Jacobsen, this charmingly petite clock marries traditional and modern functionality. The old-school bell alarm may be silenced with a quick tap of the top, and an LED... <br></p>', '139.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 13:05:56', '2020-11-28 11:05:10'),
+(5, NULL, 47, 2, 1, 'Arne Jacobsen Alarm Clock - Green', 'arne-jacobsen-alarm-clock-green', NULL, '<p>Designed by famed Danish architect and designer Arne Jacobsen, this charmingly petite clock marries traditional and modern functionality. The old-school bell alarm may be silenced with a quick tap of the top, and an LED... <br></p>', '139.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-29 10:28:02', '2020-11-28 11:05:10'),
 (6, NULL, 47, 2, 2, 'Schoolhouse Electric Clock - Persimmon', 'schoolhouse-electric-clock-persimmon', NULL, '<p>Inspired by the scale and durability of industrial wall clocks. \r\nHand-assembled in our Portland factory, the Schoolhouse Electric Clock \r\nis constructed with a spun steel case, domed glass lens and steel dial. \r\nThe hands are...\r\n					</p>', '289.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 15:32:12', '2020-11-28 11:06:08'),
 (7, NULL, 47, 2, NULL, 'Schoolhouse Electric Clock - Industrial Yellow', 'schoolhouse-electric-clock-industrial-yellow', NULL, '<p>Inspired by the scale and durability of industrial wall clocks. \r\nHand-assembled in our Portland factory, the Schoolhouse Electric Clock \r\nis constructed with a spun steel case, domed glass lens and steel dial. \r\nThe hands are...\r\n					</p>', '289.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 11:07:01', '2020-11-28 11:07:01'),
 (8, NULL, 47, 2, 2, 'Flip Clock - Red', 'flip-clock-red', NULL, '<p>Crafted by one of the world\'s original flip clock manufacturers, in \r\nbusiness since 1956, this expertly made timepiece is a helpful analog \r\nreminder to put your phone down. Features design detailing true to its \r\nmid-century...\r\n					</p>', '99.00', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-11-28 15:32:18', '2020-11-28 11:07:31'),
@@ -206,20 +206,24 @@ CREATE TABLE `configs` (
   `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `updated_at` datetime NOT NULL,
-  `created_at` datetime NOT NULL
+  `show_as_textarea` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `configs`
 --
 
-INSERT INTO `configs` (`id`, `slug`, `description`, `value`, `updated_at`, `created_at`) VALUES
-(1, 'web-title', 'Website Title', 'Bykecms', '2020-11-28 19:01:18', '2020-10-18 06:31:08'),
-(3, 'web-description', 'Website Description', 'Bykecms Demo Webstore', '2020-11-28 13:42:25', '2020-10-18 06:32:01'),
-(4, 'web-keywords', 'Website Keywords', 'open source cms, bykecms, bykecms demo', '2020-11-28 13:42:45', '2020-10-18 06:32:10'),
-(13, 'cms-title', 'Name of CMS', 'BykeCMS', '2020-11-28 19:01:40', '2020-11-28 13:40:47'),
-(14, 'cms-send-email-on-order', 'Send email after order', 'hi@bykecms.com', '2020-11-28 13:41:56', '2020-11-28 13:41:56');
+INSERT INTO `configs` (`id`, `slug`, `description`, `value`, `show_as_textarea`) VALUES
+(1, 'web-title', 'Website Title', 'Bykecms', NULL),
+(3, 'web-description', 'Website Description', 'Bykecms Demo Webstore', NULL),
+(4, 'web-keywords', 'Website Keywords', 'open source cms, bykecms, bykecms demo', 1),
+(13, 'cms-title', 'Name of CMS', 'Bykecms', NULL),
+(14, 'web-send-email-on-order', 'Send email after order', 'sukys.gediminas@gmail.com', NULL),
+(15, 'web-seller-details-for-order', 'Seller details in Order View', 'Bykecms\r\n<br/>\r\nhttps://bykecms.com\r\n<br/>\r\nhi@bykecms.com\r\n<br/>\r\nThis is demo webstore. \r\n<br/>\r\nProducts here are not for sale.', 1),
+(16, 'web-vat-percent', 'Add VAT to prices (percents)', '0', NULL),
+(17, 'web-cart-finish-success-title', 'Title when order is successful', 'Thank you!', NULL),
+(18, 'web-cart-finish-success', 'Message when order is successful', 'Your order has been submitted successfully. We will contact you soon to arrange details about receiving products.', 1),
+(19, 'web-google-analytics', 'Google Analytics Tracker Code', '<!-- Global site tag (gtag.js) - Google Analytics -->\r\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-TZ3SET45Z2\"></script>\r\n<script>\r\n  window.dataLayer = window.dataLayer || [];\r\n  function gtag(){dataLayer.push(arguments);}\r\n  gtag(\'js\', new Date());\r\n\r\n  gtag(\'config\', \'G-TZ3SET45Z2\');\r\n</script>', 1);
 
 -- --------------------------------------------------------
 
@@ -335,7 +339,7 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `bit_id`, `tag_id`, `name`, `slug`, `filename`, `filesize_original_kb`, `filename_original`, `position`, `status`, `random`, `updated_at`, `created_at`) VALUES
-(9, 5, NULL, NULL, NULL, '033ef220ac8e357abfcc8944cf691114.jpg', NULL, NULL, 8, NULL, NULL, '2020-11-28 13:05:56', '2020-11-28 11:05:05'),
+(9, 5, NULL, NULL, NULL, '033ef220ac8e357abfcc8944cf691114.jpg', NULL, NULL, 8, NULL, NULL, '2020-11-29 10:28:02', '2020-11-28 11:05:05'),
 (11, 6, NULL, NULL, NULL, 'd29158c10f32b3c3f05792b3131507c1.jpg', NULL, NULL, 10, NULL, NULL, '2020-11-28 15:32:12', '2020-11-28 11:06:05'),
 (13, 7, NULL, NULL, NULL, '0e84ac8b20687b912b06e73f63533995.jpg', NULL, NULL, 12, NULL, NULL, '2020-11-28 11:07:01', '2020-11-28 11:06:57'),
 (14, 8, NULL, NULL, NULL, '0aa0a2ef445fb82359f62aea3b857760.jpg', NULL, NULL, 13, NULL, NULL, '2020-11-28 15:32:18', '2020-11-28 11:07:29'),
@@ -583,7 +587,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `bits`
 --
 ALTER TABLE `bits`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `bit_themes`
@@ -607,7 +611,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `cart_bits`
 --
 ALTER TABLE `cart_bits`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `clients`
@@ -619,7 +623,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `configs`
 --
 ALTER TABLE `configs`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

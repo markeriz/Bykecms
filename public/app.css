@@ -52,11 +52,21 @@ hr {
 border:none;
 border-bottom:1px solid rgb(230,230,230);
 }
+b, strong {
+font-weight:500;
+}
+.gray {
+color:#999;
+}
+
 a, a:visited, a:active {
 text-decoration:none;
 color:red;
 }
   a:hover {
+  color:black;
+  }
+  a.black {
   color:black;
   }
 .container {

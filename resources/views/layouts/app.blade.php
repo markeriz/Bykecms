@@ -71,5 +71,7 @@
 
         </div>
 
+        {!! c('web-google-analytics') !!}
+
     </body>
 </html>

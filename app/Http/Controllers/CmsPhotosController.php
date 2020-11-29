@@ -43,11 +43,11 @@ class CmsPhotosController extends Controller {
 				$cms_photo->save();
 
 				// Creating Dir
-				$uploaded_filename = public_path('nuotraukos').'/'.$cms_photo->id.'/'.$new_name;
+				$uploaded_filename = public_path('photos').'/'.$cms_photo->id.'/'.$new_name;
 				
             // Saving original file
 
-            $store = $photo->move(public_path('nuotraukos').'/'.$cms_photo->id,$new_name);
+            $store = $photo->move(public_path('photos').'/'.$cms_photo->id,$new_name);
 
 				/*
 				Generate Sizes
@@ -63,7 +63,7 @@ class CmsPhotosController extends Controller {
 				\Image::make($uploaded_filename)->fit(
 					200, 
 					200
-				)->save('nuotraukos/'.$cms_photo->id.'/crop.'.$new_name);
+				)->save('photos/'.$cms_photo->id.'/crop.'.$new_name);
 
 				// Resize. large. 900x900
 				\Image::make($uploaded_filename)->resize(
@@ -73,7 +73,7 @@ class CmsPhotosController extends Controller {
 						$constraint->aspectRatio();
 						$constraint->upsize();
 					}
-				)->save('nuotraukos/'.$cms_photo->id.'/large.'.$new_name);
+				)->save('photos/'.$cms_photo->id.'/large.'.$new_name);
 
 				// Resize. small. 500x500
 				\Image::make($uploaded_filename)->resize(
@@ -83,7 +83,7 @@ class CmsPhotosController extends Controller {
 						$constraint->aspectRatio();
 						$constraint->upsize();
 					}
-				)->save('nuotraukos/'.$cms_photo->id.'/small.'.$new_name);
+				)->save('photos/'.$cms_photo->id.'/small.'.$new_name);
 
 				// Resize. sthumb. 150x150
 				\Image::make($uploaded_filename)->resize(
@@ -93,7 +93,7 @@ class CmsPhotosController extends Controller {
 						$constraint->aspectRatio();
 						$constraint->upsize();
 					}
-				)->save('nuotraukos/'.$cms_photo->id.'/sthumb.'.$new_name);
+				)->save('photos/'.$cms_photo->id.'/sthumb.'.$new_name);
 
 				// Resize. thumb. 300x300
 				\Image::make($uploaded_filename)->resize(
@@ -103,7 +103,7 @@ class CmsPhotosController extends Controller {
 						$constraint->aspectRatio();
 						$constraint->upsize();
 					}
-				)->save('nuotraukos/'.$cms_photo->id.'/thumb.'.$new_name);
+				)->save('photos/'.$cms_photo->id.'/thumb.'.$new_name);
 
 				// Resize. xlarge. 2600x2600
 				\Image::make($uploaded_filename)->resize(
@@ -113,7 +113,7 @@ class CmsPhotosController extends Controller {
 						$constraint->aspectRatio();
 						$constraint->upsize();
 					}
-				)->save('nuotraukos/'.$cms_photo->id.'/xlarge.'.$new_name);
+				)->save('photos/'.$cms_photo->id.'/xlarge.'.$new_name);
 
 				$ids[] = $cms_photo->id;
 
@@ -139,7 +139,7 @@ class CmsPhotosController extends Controller {
 
 		// Remove files and dir
 
-		$dir = public_path('nuotraukos').'/'.$id;
+		$dir = public_path('photos').'/'.$id;
 
 		if (file_exists($dir)) {
 			array_map('unlink', glob("$dir/*.*"));

@@ -21,7 +21,7 @@
                             <td style="padding-right:0;">
                                 @if (!empty($cms_bit->photo))
                                     <a href="{{ route('cms_bits.edit',$cms_bit->id) }}">
-                                        <img src="{{ url('/nuotraukos/'.$cms_bit->photo->id.'/'.$cms_bit->photo->filename) }}" style="height:40px;">
+                                        <img src="{{ url('/photos/'.$cms_bit->photo->id.'/'.$cms_bit->photo->filename) }}" style="height:40px;">
                                     </a>
                                 @endif
                             </td>
@@ -37,7 +37,7 @@
                                 @if (count($cms_bit->cms_photos)>1)
                                     <p>
                                         @foreach($cms_bit->cms_photos as $photo)
-                                            <img src="{{ url('/nuotraukos/'.$photo->id.'/'.$photo->filename) }}" style="height:30px; opacity:0.5">
+                                            <img src="{{ url('/photos/'.$photo->id.'/'.$photo->filename) }}" style="height:30px; opacity:0.5">
                                         @endforeach
                                     </p>
                                 @endif 

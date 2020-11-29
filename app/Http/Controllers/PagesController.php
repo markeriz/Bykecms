@@ -48,4 +48,9 @@ class PagesController extends Controller {
          return redirect('/');
       }
    }
+
+   public function bit(Request $request, $slug = null) {
+      $bit = \App\Models\CmsBit::where('slug', $slug)->first();
+      return view('pages/bit', compact('bit'));
+   }
 }
