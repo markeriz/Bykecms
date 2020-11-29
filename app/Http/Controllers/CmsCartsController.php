@@ -36,29 +36,8 @@ class CmsCartsController extends Controller {
         $cms_cart->cart_items()->delete();
         $cms_cart->delete();
 
-        return back()->with('success', 'Sąskaita sėkmingai ištrinta.');
+        return back()->with('success', __('Deleted Successfully'));
         
-    }
-
-    //
-    //
-    // Update
-    //
-    //
-    public function update(Request $request, $id) {
-    
-        //
-        // SAVE BIKE PARAMS
-        //
-        $cms_bike = \App\Models\Bike::find($id);
-        $cms_bike->name = $request->name;
-        $cms_bike->price = $request->price;
-        $cms_bike->old_price = $request->old_price;
-        $cms_bike->code = $request->code;
-        $cms_bike->popular = $request->popular;
-        $cms_bike->status = $request->status;
-        $cms_bike->save();
-        return back()->with('success', 'Informacija sėkmingai išsaugota');
     }
 
 }
