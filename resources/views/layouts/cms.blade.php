@@ -25,39 +25,45 @@ if (Session::get('cms_language_code')=='') {
 
     </head>
     <body class="antialiased">
-        <script
-			  src="https://code.jquery.com/jquery-1.12.4.min.js"
-			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-              crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
               
 
         <div class="container">
             <div style="height:1rem"></div>
             <div class="row top-navigation"> 
                 <div class="col-md-12"> 
-
-                    {{ Html::link('/cms', c('cms-title'), ['class'=>'gray']) }}
-
+                    
+                    {{ Html::link('/cms', c('cms-title')) }}
+                    
+                    &nbsp;
                     &nbsp;
 
-                    {{ Html::link('/cms_tags',__('Tags'), ['class'=>'gray']) }}
-
-                    &nbsp;
-
-                    {{ Html::link('/cms_carts',__('Orders'), ['class'=>'gray']) }}
-
-                    &nbsp;
-
-                    {{ Html::link('/cms_configs',__('Configs'), ['class'=>'gray']) }}
-
-                    &nbsp;
-
-                    {{ Html::link('/cms_users',__('Users'), ['class'=>'gray']) }}
+                    <a href="{{ url('/cms_tags') }}" class="gray"> 
+                    <i class="fas fa-hashtag gray" style="font-size:80%;"></i> {{ __('Tags') }}</a>
 
                     &nbsp;
                     &nbsp;
 
-                    <i class="fas fa-external-link-alt gray"></i> {!! Html::link('/',__('Website'), ['class'=>'gray', 'target'=>'_blank']) !!}
+                    <i class="fas fa-shopping-cart gray" style="font-size:80%;"></i>
+                    <a href="{{ url('/cms_carts')}}" class="gray">{{ __('Orders') }}</a>
+
+                    &nbsp;
+                    &nbsp;
+
+                    <i class="fas fa-cogs gray" style="font-size:80%;"></i>
+                    <a href="{{ url('/cms_configs')}}" class="gray">{{ __('Configs') }}</a>
+
+                    &nbsp;
+                    &nbsp;
+
+                    <i class="fas fa-user-friends gray" style="font-size:80%;"></i>
+                    <a href="{{ url('/cms_users')}}" class="gray">{{ __('Users') }}</a>
+
+                    &nbsp;
+                    &nbsp;
+
+                    <i class="fas fa-external-link-alt  gray" style="font-size:80%;"></i>
+                    {!! Html::link('/',__('Website'), ['class'=>'gray', 'target'=>'_blank']) !!}
                     
                     <?php 
                     //
@@ -146,7 +152,6 @@ if (Session::get('cms_language_code')=='') {
                             @endif
 
                         @endforeach
-
 
                         
                 </div>

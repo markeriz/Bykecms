@@ -55,9 +55,13 @@ class CmsBit extends Model {
     // Duplicating same relations, because of not creating two models
 
     public function childs () {
-        return $this->hasMany('App\Models\CmsBit', 'parent_id')->orderBy('position', 'desc');
+        return $this->hasMany('App\Models\CmsBit', 'parent_id')->orderBy('position', 'asc');
     }
 
+    public function parent () {
+        return $this->belongsTo('App\Models\CmsBit', 'parent_id');
+    }
+    
     public function photo () {
         return $this->hasOne('App\Models\CmsPhoto', 'bit_id')->orderBy('position', 'desc');
     }

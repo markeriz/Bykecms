@@ -11,12 +11,9 @@
    
   @if (!empty($bit->photos[0]))
     @foreach ($bit->photos as $photo)
-      <div class="col-md-6">
-        <img src="{{ url('/photos/'.$photo->id.'/large.'.$photo->filename) }}" style="width:100%;">
-        <?php 
-        $photo = $bit->photo;
-        ?>
-        @include('_bit_themes.partials.photo-description')
+      <div class="col-md-4 col-sm-6 col-xs-6">
+         @include('_bit_themes.partials.photo-description')
+         <img src="{{ url('/photos/'.$photo->id.'/large.'.$photo->filename) }}" style="width:100%;">
       </div>
      @endforeach
    @endif

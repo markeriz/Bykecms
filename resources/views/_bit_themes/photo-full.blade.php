@@ -1,13 +1,12 @@
-@if (!empty($bit->name))
-    <h2>
-        <a href="{{ url('/bit/'.$bit->slug) }}" class="black">
-            {{ $bit->name }}
-        </a>
-    </h2>
-@endif
+@include('_bit_themes.partials.bit-name')
 
 @foreach($bit->cms_photos as $photo)
-   <img src="{{ url('/photos/'.$photo->id.'/xlarge.'.$photo->filename) }}" style="width:100%;">
+
+    @include('_bit_themes.partials.photo-description')
+    <img src="{{ url('/photos/'.$photo->id.'/xlarge.'.$photo->filename) }}" style="width:100%;">
+    <br/>
+    <br/>
+    
 @endforeach
 {!! $bit->text !!}
 @include('_bit_themes.partials.button')

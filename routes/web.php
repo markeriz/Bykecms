@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // Auth
-Auth::routes();
+// * Registration is disabled, because registered user will be able login to Bykecms
+Auth::routes(['register' => false]);
 
 // Home
 Route::get('/', 'App\Http\Controllers\PagesController@home')->name('home');

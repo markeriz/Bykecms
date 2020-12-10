@@ -80,6 +80,14 @@ class CmsBitsController extends Controller
             }
         }
 
+        // Save Photo Descriptions 
+        //dd($request['descriptions']);
+        if (!empty($request['descriptions'])) {
+            foreach ($request['descriptions'] as $id=>$value) {
+                \App\Models\CmsPhoto::where('id', $id)->update(array('description' => $value));
+            }
+        }
+
         // Redirect by tag.
         if (!empty($parent_cms_bit)) {
             return redirect('/cms_bits?parent_id='.$parent_cms_bit->id)->with('success',__('Saved'));
@@ -137,6 +145,13 @@ class CmsBitsController extends Controller
             foreach ($request['uploaded_photos'] as $photo_id) {
                 $max_position = $max_position - 1;
                 \App\Models\CmsPhoto::where('id', $photo_id)->update(array('position' => $max_position));
+            }
+        }
+
+        // Save Photo Descriptions 
+        if (!empty($request['descriptions'])) {
+            foreach ($request['descriptions'] as $id=>$value) {
+                \App\Models\CmsPhoto::where('id', $id)->update(array('description' => $value));
             }
         }
 

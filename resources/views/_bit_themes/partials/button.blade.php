@@ -3,11 +3,10 @@
 @endif
 @if ($bit->product_button==1) 
     <p>
-        &euro;{{$bit->price}}
+        &euro;{{$bit->parent->price}}
     </p>
-    <a class="btn btn-primary" href="{{ url('/add-to-cart/'.$bit->parent_id) }}">Add to cart</a>
-@endif
-@if (count($bit->childs)==0 and $bit->bit_type_id==2)
+    <a class="btn btn-primary" href="{{ url('/add-to-cart/'.$bit->parent->id) }}">Add to cart</a>
+@elseif (count($bit->childs)==0 and $bit->bit_type_id==2)
     <p>
         &euro;{{$bit->price}}
     </p>

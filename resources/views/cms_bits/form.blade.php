@@ -1,12 +1,11 @@
 
-
+<!-- Name -->
 <div class="form-group">
    <label>{{ __('Name') }}</label>
    {{ Form::text('name', $cms_bit->name) }}
 </div>
-<?php 
-// Tag is Defined 
-?>
+
+<!-- Select Tag -->
 @if (!empty($cms_tag))
     <div class="form-group">
         <?php 
@@ -25,9 +24,8 @@
         {!! Form::label('tag_id', __('Tag')) !!}
         {{ Form::select('tag_id', $smags, $cms_tag->id, ['class'=>'select']) }}
     </div>
-<?php 
-// parent_id is Defined 
-?>
+
+<!-- Tag is Selected -->
 @elseif (!empty($parent_cms_bit))
     <div class="form-group">
         {!! Form::label('parent_id', __('Belongs to')) !!}:
@@ -35,11 +33,45 @@
         {{$parent_cms_bit->name}}
     </div>
 @endif
+
+<!-- Text -->
 <div class="form-group">
    <label>{{ __('Text') }}</label>
    {{ Form::textarea('text', $cms_bit->text, ['id'=>'trumbowyg-demo', 'style'=>'width:100%;']) }}
+    
+    <?php
+    // 
+    // trumbowyg scripts, style
+    //
+    ?>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/trumbowyg.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/ui/trumbowyg.min.css">
+    <script>
+        $('#trumbowyg-demo').trumbowyg({
+        btns: [
+            ['undo', 'redo'], // Only supported in Blink browsers
+            ['strong', 'em', 'del'],
+            ['link'],
+            ['insertImage'],
+            ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+            ['unorderedList', 'orderedList'],
+            ['removeformat', 'viewHTML']
+        ]
+    });
+    </script>
+    <style type="text/css">
+    .trumbowyg-box, .trumbowyg-editor {
+    margin-top:0;
+    }
+    .trumbowyg-editor, .trumbowyg-textarea {
+    padding:0.5rem;
+    }
+    </style>
 </div>
 
+<!-- Theme -->
 <div class="row"> 
     <div class="col-md-6">
         <div class="form-group">
@@ -75,6 +107,7 @@
     </div>
 </div>
 
+<!-- Product Button -->
 @if (!empty($parent_cms_bit) and $parent_cms_bit->bit_type_id==2)
     <hr/>
     <div class="form-group">
@@ -90,7 +123,6 @@
 
 <?php 
 /*
-
 <div class="form-group">
    <label>Nuoroda (/preke veda į lokalų turinį, https į globalų)</label>
    {{ Form::text('product_url', $cms_bit->product_url) }}
@@ -100,6 +132,7 @@
 
 <hr/>
 
+<!-- Status -->
 <div class="form-group">
    {!! Form::hidden('status', 0) !!}
    {!! Form::checkbox('status', 1, $cms_bit->status) !!}
@@ -108,6 +141,7 @@
 
 <hr/>
 
+<!-- Photos -->
 <div class="form-group gray-area">
     <label for="multiple_files">
         
@@ -203,7 +237,7 @@
     <?php
     /*
     Attention!
-    sortable.js conflicts with laravel app.js
+    sortable.js conflicts with laravel app.js or new jQuery versions
     */
     ?>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -214,7 +248,7 @@
       $( "#sortable" ).disableSelection();
     } );
     </script>
-    <ul id="sortable" class="row inline-ul">
+    <ul id="sortable" class="inline-ul">
         @include('cms_photos.sortable_rows')
     </ul>
 
@@ -266,34 +300,7 @@
     </script>
 </div> 
 
+<!-- Submit -->
 <div class="form-group">
    <button type="submit" class="btn">{{__('Save')}}</button>
 </div>
-
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/trumbowyg.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.20.0/ui/trumbowyg.min.css">
-<script>
-    $('#trumbowyg-demo').trumbowyg({
-    btns: [
-        ['undo', 'redo'], // Only supported in Blink browsers
-        ['strong', 'em', 'del'],
-        ['link'],
-        ['insertImage'],
-        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-        ['unorderedList', 'orderedList'],
-        ['removeformat', 'viewHTML']
-    ]
-});
-</script>
-<style type="text/css">
-.trumbowyg-box, .trumbowyg-editor {
-margin-top:0;
-}
-.trumbowyg-editor, .trumbowyg-textarea {
-padding:0.5rem;
-}
-</style>

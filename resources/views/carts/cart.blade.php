@@ -47,17 +47,17 @@
 							<?php 
 							$photo = \App\Models\CmsPhoto::find($bit_session['photo_id']);
 							?>
-							<a href="{{ url('/bit/'.$bit->slug) }}">
+							<a href="{{ url('/'.$bit->slug) }}">
 							    <img src="{{ url('photos/'.$photo->id.'/thumb.'.$photo->filename) }}" style="width:50px">
                      </a>
 						@elseif ( !empty($bit) and !empty($bit->photo) )
-							<a href="{{ url('/bit/'.$bit->slug) }}">
+							<a href="{{ url('/'.$bit->slug) }}">
 							    <img src="{{ url('photos/'.$bit->photo->id.'/thumb.'.$bit->photo->filename) }}" style="width:50px">
                      </a>
                   @endif
 					</td>
 					<td>
-						<a href="{{ url('/bit/'.$bit->slug) }}">
+						<a href="{{ url('/'.$bit->slug) }}">
 							{{ $bit->name }}
 						</a>
                         
@@ -125,18 +125,18 @@
 							<?php 
 							$photo = \App\Models\CmsPhoto::find($bit_session['photo_id']);
 							?>
-							<a href="{{ url('/bit/'.$bit->slug) }}">
+							<a href="{{ url('/'.$bit->slug) }}">
 							    <img src="{{ url('photos/'.$photo->id.'/thumb.'.$photo->filename) }}" style="width:80px; padding-bottom:1rem">
                      </a>
 						@elseif ( !empty($bit) and !empty($bit->photo) )
-							<a href="{{ url('/bit/'.$bit->slug) }}">
+							<a href="{{ url('/'.$bit->slug) }}">
 							    <img src="{{ url('photos/'.$bit->photo->id.'/thumb.'.$bit->photo->filename) }}" style="width:80px; padding-bottom:1rem">
                      </a>
                   @endif
 
 						<br/>
 						
-						<a href="{{ url('/bit/'.$bit->slug) }}">
+						<a href="{{ url('/'.$bit->slug) }}">
 							<strong>
 								{{ $bit->name }}
 							</strong>

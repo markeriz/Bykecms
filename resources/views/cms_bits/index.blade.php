@@ -50,7 +50,7 @@
                                 $childs = \App\Models\CmsBit::where('parent_id', $cms_bit->id)->count();
                                 ?>
                                 
-                                    <a href="{{ url('/cms_bits?parent_id='.$cms_bit->id) }}">{{$childs}} {{__('Blocks')}} </a>
+                                    <a href="{{ url('/cms_bits?parent_id='.$cms_bit->id) }}">{{$childs}} {{__('Blocks Inside')}} </a>
                                     &nbsp;
                                 
  

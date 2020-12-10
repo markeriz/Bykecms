@@ -17,8 +17,11 @@ class PagesController extends Controller {
          // get $bits from childs
          if (empty($tag)) {
             $bit = \App\Models\CmsBit::where('slug', $slug)->first();
-            if (!empty($bit->childs)) {
+            
+            if (!empty($bit->childs[0])) {
                $bits = $bit->childs;
+            } else {
+               $bits[0] = $bit;
             }
 
          // get $bits from tag
@@ -42,7 +45,7 @@ class PagesController extends Controller {
          $bits='';
       }
       
-      if (!empty($tag)) {
+      if (!empty($tag) or !empty($bit)) {
          return view('pages/home', compact('bits', 'tag', 'bit'));
       } else {
          return redirect('/');

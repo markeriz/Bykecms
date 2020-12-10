@@ -126,6 +126,12 @@ padding-bottom:2rem;
 .content-block-separator {
 height:0rem;
 }
+/* STYLE */
+.photo-description {
+line-height:120%;
+padding:5px 0;
+}
+/* BIT */
 .bit {
 padding-bottom:1rem; 
 margin-bottom:1rem;
