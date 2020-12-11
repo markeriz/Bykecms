@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller {
 
-   public function home(Request $request, $slug = null) {
+   public function bits(Request $request, $slug = null) {
 
       //
       // This is Tag or Bit?
@@ -46,7 +46,7 @@ class PagesController extends Controller {
       }
       
       if (!empty($tag) or !empty($bit)) {
-         return view('pages/home', compact('bits', 'tag', 'bit'));
+         return view('pages/bits', compact('bits', 'tag', 'bit'));
       } else {
          return redirect('/');
       }

@@ -39,32 +39,40 @@ if (Session::get('cms_language_code')=='') {
                     &nbsp;
 
                     <a href="{{ url('/cms_tags') }}" class="gray"> 
-                    <i class="fas fa-hashtag gray" style="font-size:80%;"></i> {{ __('Tags') }}</a>
+                    <i class="fas fa-hashtag gray" style="font-size:70%;"></i> {{ __('Tags') }}</a>
 
                     &nbsp;
                     &nbsp;
 
-                    <i class="fas fa-shopping-cart gray" style="font-size:80%;"></i>
+                    <i class="fas fa-shopping-cart gray" style="font-size:70%;"></i>
                     <a href="{{ url('/cms_carts')}}" class="gray">{{ __('Orders') }}</a>
 
                     &nbsp;
                     &nbsp;
 
-                    <i class="fas fa-cogs gray" style="font-size:80%;"></i>
+                    <i class="fas fa-cogs gray" style="font-size:70%;"></i>
                     <a href="{{ url('/cms_configs')}}" class="gray">{{ __('Configs') }}</a>
 
                     &nbsp;
                     &nbsp;
 
-                    <i class="fas fa-user-friends gray" style="font-size:80%;"></i>
+                    <i class="fas fa-user-friends gray" style="font-size:70%;"></i>
                     <a href="{{ url('/cms_users')}}" class="gray">{{ __('Users') }}</a>
+                    
+                    &nbsp;
+                    &nbsp;
+
+                    <i class="fas fa-envelope-open-text gray" style="font-size:70%;"></i>
+                    <a href="{{ url('/cms_queries')}}" class="gray">{{ __('Queries') }}</a>
 
                     &nbsp;
                     &nbsp;
 
-                    <i class="fas fa-external-link-alt  gray" style="font-size:80%;"></i>
+                    <i class="fas fa-external-link-alt  gray" style="font-size:70%;"></i>
                     {!! Html::link('/',__('Website'), ['class'=>'gray', 'target'=>'_blank']) !!}
                     
+
+
                     <?php 
                     //
                     // Todo: Changing Language
@@ -84,7 +92,8 @@ if (Session::get('cms_language_code')=='') {
                     <div style="float:right">
 
                         <a class="dropdown-item gray" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }} <i class="fas fa-sign-out-alt gray"></i>
+                            <i class="fas fa-sign-out-alt gray" style="font-size:70%;"></i>
+                            {{ __('Logout') }} 
                         </a>
 
                     </div>

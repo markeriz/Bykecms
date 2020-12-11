@@ -75,7 +75,7 @@ margin-bottom:1rem;
 }
 a, a:visited, a:active, a:active {
   text-decoration:none;
-  color:red;
+  color:#E20070;
   }
     a.black {
     color:black;
@@ -132,7 +132,7 @@ margin-right: auto;
 .alert {
 background: white;
 padding:1rem;
-border:1px solid  red;
+border:1px solid  #E20070;
 border-radius:5px;
 margin-bottom:1rem;
 }
@@ -142,7 +142,7 @@ padding-bottom:1rem;
 .btn {
 background:white; 
 border-radius:5px; 
-border:1px solid red;
+border:1px solid #E20070;
 font-size:15px;
 font-family:sans-serif;
 display:inline-block;
@@ -156,7 +156,7 @@ cursor:pointer;
 }
 
   .btn, .btn a, .btn:visited, .btn:link, .btn:hover, .btn a:hover {
-  color:red;
+  color:#E20070;
   }
   .btn.btn-black, .btn.btn-black:hover {
   border:1px solid black;

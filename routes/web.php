@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes(['register' => false]);
 
 // Home
-Route::get('/', 'App\Http\Controllers\PagesController@home')->name('home');
+Route::get('/', 'App\Http\Controllers\PagesController@bits')->name('home');
 
 // Set Website Language
 Route::get('/set_language', 'App\Http\Controllers\PagesController@set_language');
@@ -41,9 +41,13 @@ Route::post('/create_cart', 'App\Http\Controllers\CartsController@create_cart');
     // Set CMS Language
     Route::get('/set_cms_language', 'App\Http\Controllers\CmsPagesController@set_language')->middleware('auth');;
 
+    // Send Query
+    Route::post('/send-query', 'App\Http\Controllers\QueriesController@send_query');
+
     // Resources
     Route::resource('cms_bits', App\Http\Controllers\CmsBitsController::class)->middleware('auth');
     Route::resource('cms_configs', App\Http\Controllers\CmsConfigsController::class)->middleware('auth');
+    Route::resource('cms_queries', App\Http\Controllers\CmsQueriesController::class)->middleware('auth');
     Route::resource('cms_tags', App\Http\Controllers\CmsTagsController::class)->middleware('auth');
     Route::resource('cms_users', App\Http\Controllers\CmsUsersController::class)->middleware('auth');
 
@@ -70,7 +74,7 @@ Route::post('/create_cart', 'App\Http\Controllers\CartsController@create_cart');
     Route::get('/order/{hash}', 'App\Http\Controllers\CartsController@order');
 
 // Rendering page, if other routes didn't met condition
-Route::get('/{slug}', 'App\Http\Controllers\PagesController@home');
+Route::get('/{slug}', 'App\Http\Controllers\PagesController@bits');
 
 // Echo Bit
 Route::get('/bit/{slug}', 'App\Http\Controllers\PagesController@bit');

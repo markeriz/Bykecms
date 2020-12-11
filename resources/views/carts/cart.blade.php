@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Cart</h1>
+<h1>{{ __('Cart') }}</h1>
 
 @if ( Session::has('bits') and count(Session::get('bits'))>0 )
 
@@ -22,16 +22,16 @@
 						 &nbsp;
 					</th>
 					<th>
-						Name
+						{{ __('Name') }}
 					</th>
 					<th style="text-align:right">
-						Quant.
+						{{ __('Quant.') }}
 					</th>
 					<th style="text-align:right">
-						Price
+						{{ __('Price') }}
 					</th>
 					<th style="text-align:right">
-						Sum
+						{{ __('Sum') }}
 					</th>
 				</tr>
 			</thead>
@@ -68,7 +68,7 @@
 						?>
 						<input type="texfield" name="bits[{{$bit_session_key}}]" value="{{ $bit_session['quantity'] }}" style="width:40px;">
                         <div style="padding-top:5px;">
-                            <a href="{{ url('/remove_item/'.$bit_session_key) }}" style="font-size:90%">Remove</a>
+                            <a href="{{ url('/remove_item/'.$bit_session_key) }}" style="font-size:90%">{{ __('Remove') }}</a>
                         </div>
 					</td>
 					<td style="text-align:right">
@@ -98,11 +98,11 @@
                  <td>
                      <button type="submit" class="btn btn-black">
                         <i class="fas fa-sync-alt"></i>&nbsp;
-                        Recalculate Quantities
+                        {{ __('Recalculate Quantities') }}
                      </button>
                  </td>
                  <td style="text-align:right; font-weight:bolder">
-                     Total: &euro;{{ number_format($whole_sum, 2) }}
+                     {{ __('Total') }}: &euro;{{ number_format($whole_sum, 2) }}
                  </td>
              </tr>
          </thead>
@@ -151,16 +151,16 @@
                            &euro;{{ $bit->old_price }}
 								</span>
 							@endif
-							Price: &euro;{{ $bit->price }}, Sum: &euro;{{ number_format($bit->price * $bit_session['quantity'], 2) }}
+							{{ __('Price') }}: &euro;{{ $bit->price }}, {{ __('Sum') }}: &euro;{{ number_format($bit->price * $bit_session['quantity'], 2) }}
 						</span>
 
 						<div style="background:rgb(240,240,240); padding:1rem; border-radius:5px; margin-top:1rem;">
 							<?php 
 							//{{= text_field_tag 'quantity['+i.id.to_s+']', i.quantity, {:style=>'width:50px; float:right'} }}
 							?>
-							Quantity: <input type="texfield" name="bits[{{$bit_session_key}}]" value="{{ $bit_session['quantity'] }}" style="width:50px;">
+							{{ __('Quant.') }} <input type="texfield" name="bits[{{$bit_session_key}}]" value="{{ $bit_session['quantity'] }}" style="width:50px;">
 							<div style="padding-top:5px;">
-								<a href="{{ url('/remove_item/'.$bit_session_key) }}" style="font-size:90%">Remove</a>
+								<a href="{{ url('/remove_item/'.$bit_session_key) }}" style="font-size:90%">{{ __('Remove') }}</a>
 							</div>
 						</div>
 			
@@ -173,11 +173,11 @@
                     <td>
                         <button type="submit" class="btn btn-black">
                             <i class="fas fa-sync-alt"></i>&nbsp;
-                            Recalculate Quantities
+                            {{ __('Recalculate Quantities') }}
                         </button>
                     </td>
                     <td style="text-align:right; font-weight:bolder">
-                        Total: &euro;{{ number_format($whole_sum, 2) }}
+						  {{ __('Total') }}: &euro;{{ number_format($whole_sum, 2) }}
                     </td>
                 </tr>
             </thead>
@@ -188,7 +188,7 @@
    
    <hr/>
 
-	<div style=" text-algin:right">
+	<div>
 
 		<script>
 			$( document ).ready(function() {
@@ -205,10 +205,10 @@
 
       <div style="padding-top:1rem; line-height:150%;" id="options_field">
           <div>
-              <button type="submit" id="person_fields_btn" class="btn btn-black" style="float:right">Buy as a private person &rarr;</button>
+              <button type="submit" id="person_fields_btn" class="btn btn-black" style="float:right">{{ __('Buy as a private person') }} &rarr;</button>
           </div>
           <div style="clear:both;">
-              <button type="submit" id="company_fields_btn" class="btn btn-black" style="float:right">Buy as a company &rarr;</button>
+              <button type="submit" id="company_fields_btn" class="btn btn-black" style="float:right">{{ __('Buy as a company') }} &rarr;</button>
           </div>
       </div>
 
@@ -217,10 +217,10 @@
 			
 
 			<div style="display:none" id="person_fields">
-                <a href="{{ url('/prekiu-krepselis') }}">&larr; Go back</a>
+                <a href="{{ url('/prekiu-krepselis') }}">&larr; {{ __('Go back') }}</a>
 				<br/>
 				<br/>
-				<h2>Buy as a private person</h2>
+				<h2>{{ __('Buy as a private person') }}</h2>
             
             <hr/>
 
@@ -229,53 +229,53 @@
                     {{ Form::hidden('sum', $whole_sum) }}
 
 				    <div class="field">
-                        <label>Name and Surname</label>
+                        <label>{{ __('Name and Surname') }}</label>
                         {{ Form::text('name') }}
 				    </div>
 				    	
 				    <div class="field">
-                        <label>City</label>
+                        <label>{{ __('City') }}</label>
                         {{ Form::text('city') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Street name, house number, flat numeris (for delivery)</label>
+                        <label>{{ __('Street name, house number, flat numeris (for delivery)') }}</label>
 				        {{ Form::text('address') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Postcode</label>
+                        <label>{{ __('Postcode') }}</label>
 				        {{ Form::text('postcode') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Email</label>
+                        <label>{{ __('Email') }}</label>
 				        {{ Form::text('email') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Phone number</label>
+                        <label>{{ __('Phone number') }}</label>
 				        {{ Form::text('phone') }}
 				    </div>
 
 				    <div class="field">
-                      <label>Payment method</label>
+                      <label>{{ __('Payment method') }}</label>
 				      {{ Form::select('payment_method_id', \App\Models\CmsPaymentMethod::where('status', 1)->orderBy('position', 'asc')->pluck('name', 'id')->toArray()) }}
 				    </div>
                 
                 <hr/>
 
 				    <div class="field" style="padding-top:1rem;">
-                        <button type="submit" id="buy_btn" class="next btn" style="float:right">Confirm Order &raquo;</button>
+                        <button type="submit" id="buy_btn" class="next btn" style="float:right">{{ __('Confirm Order') }} &raquo;</button>
 				    </div>
                   {{ Form::close() }}
 			</div>
 
 			<div style="display:none" id="company_fields">
-                <a href="{{ url('/prekiu-krepselis') }}">&larr; Go back</a>
+                <a href="{{ url('/prekiu-krepselis') }}">&larr; {{ __('Go back') }}</a>
 				<br/>
 				<br/>
-            <h2>Buy as a company</h2>
+            <h2>{{ __('Buy as a company') }}</h2>
             
             <hr/>
 
@@ -285,59 +285,59 @@
                     {{ Form::hidden('sum', $whole_sum) }}
 
 				    <div class="field">
-                        <label>Company name</label>
+                        <label>{{ __('Company name') }}</label>
 				        {{ Form::text('name') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Company code</label>
+                        <label>{{ __('Company code') }}</label>
 				        {{ Form::text('company_code') }}
 				    </div>
 
 				    <div class="field">
-                        <label>VAT code (optional)</label>
+                        <label>{{ __('VAT code (optional)') }}</label>
 				        {{ Form::text('vat') }}
 				    </div>
 
 				    <div class="field">
-                        <label>City</label>
+                        <label>{{ __('City') }}</label>
 				        {{ Form::text('city') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Street name, house number, flat numeris (for delivery)</label>
+                        <label>{{ __('Street name, house number, flat numeris (for delivery)') }}</label>
 				        {{ Form::text('address') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Postcode</label>
+                        <label>{{ __('Postcode') }}</label>
 				        {{ Form::text('postcode') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Email</label>
+                        <label>{{ __('Email') }}</label>
 				        {{ Form::text('email') }}
 				    </div>
 
 				    <div class="field">
-                        <label>Phone number</label>
+                        <label>{{ __('Phone number') }}</label>
 				        {{ Form::text('phone') }}
 				    </div>
 
 				     <div class="field">
-                        <label>Name and Surname of person who is responsible for this order</label>
+                        <label>{{ __('Name and Surname of person who is responsible for this order') }}</label>
 				        {{ Form::text('worker') }}
 				    </div>
 				    
 				    <div class="field">
-                      <label>Payment method</label>
+                      <label>{{ __('Payment method') }}</label>
 					  {{ Form::select('payment_method_id', [null=>''] + \App\Models\CmsPaymentMethod::where('status', 1)->orderBy('position', 'asc')->pluck('name', 'id')->toArray()) }}
 				    </div>
                 
                 <hr/>
 
 				    <div class="field" style="padding-top:1rem;">
-                        <button type="submit" id="buy_btn" class="next btn" style="float:right">Confirm Order &raquo;</button>
+                        <button type="submit" id="buy_btn" class="next btn" style="float:right">{{ __('Confirm Order') }} &raquo;</button>
 				    </div>
 
                 {{ Form::close() }}
@@ -350,7 +350,7 @@
 		        return this.value === "";
 		    });
 		    if(empty.length) {
-		        alert('Pease fill in all fields');
+		        alert('{{ __("Pease fill in all fields") }}');
 		        return false;
 		    }
 		});
@@ -359,7 +359,7 @@
 
 @else   
 
-    <p>Your cart is empty.</p>
+    <p>{{ __('Your cart is empty.') }}</p>
 
 @endif
 

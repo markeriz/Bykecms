@@ -53,7 +53,7 @@
                                     <a href="{{ url('/cms_bits?parent_id='.$cms_bit->id) }}">{{$childs}} {{__('Blocks Inside')}} </a>
                                     &nbsp;
                                 
- 
+                                <a class="btn btn-primary" href="{{ route('cms_bits.edit',$cms_bit->id) }}">{{__('Edit')}}</a>
                                 <a href="{{ url('/cms_bit_delete/'.$cms_bit->id) }}" onclick="return confirm('{{__('Do you really want to delete?')}}')">{{__('Delete')}}</a>
                             </td>
                         </tr>
